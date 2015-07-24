@@ -1,0 +1,3 @@
+OPERATION=MAKE-OBS
+INPUT_OBS_FILE=input/obsprec.csv
+OUTPUT_OBS_FILE=input/obsprec_for_box_poly.bufr

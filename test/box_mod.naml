@@ -1,0 +1,11 @@
+OPERATION=BOX-MOD
+INPUT_MODEL_FILE=input/model.grib
+INPUT_BOX_TEMPLATE=input/boxtemplate.grib
+OUTPUT_MODEL_FILE=output_box/model_in_box.grib
+# this variable can be specified if recumulation of model data
+# on a given interval is desired, the interval should be specified
+# as 'DDDD HH'
+TIME_PROC_INTERVAL='0 06'
+# function used in spatial processing {average|max|min}
+# default average
+#SPACE_PROC=average

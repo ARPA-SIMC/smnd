@@ -1,0 +1,16 @@
+OPERATION=POLY-OBS
+INPUT_OBS_FILE=input/obsprec_for_box_poly.bufr
+INPUT_POLYGON_FILE=./input/polygon_italy.shp
+OUTPUT_OBS_FILE=output_poly/obsprec_in_poly.bufr
+START_BLOCK_NUMBER=19
+START_STATION_NUMBER=000
+# variables to be set only at the first run
+# for generating WMO flat file
+INPUT_WMO_TEMPLATE=input/wmo_flat_file_template.txt
+OUTPUT_WMO_FILE=output_poly/wmo_flat_file_poly.txt
+# template used in output bufr file {synop-ecmwf|synop-wmo}
+# default synop-wmo
+#BUFR_TEMPLATE=synop-wmo
+# function used in spatial processing {average|max|min}
+# default average
+#SPACE_PROC=average

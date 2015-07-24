@@ -1,0 +1,9 @@
+OPERATION=MAKE-OBS
+INPUT_OBS_FILE=input/obsprec.csv
+OUTPUT_OBS_FILE=output/obsprec.bufr
+START_BLOCK_NUMBER=17
+START_STATION_NUMBER=000
+# variables to be set only at the first run
+# for generating WMO flat file
+INPUT_WMO_TEMPLATE=input/wmo_flat_file_template.txt
+OUTPUT_WMO_FILE=output/wmo_flat_file_obs.txt

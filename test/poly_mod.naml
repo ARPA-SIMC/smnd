@@ -1,0 +1,11 @@
+OPERATION=POLY-MOD
+INPUT_MODEL_FILE=input/model.grib
+INPUT_POLYGON_FILE=./input/polygon_italy.shp
+OUTPUT_MODEL_FILE=output_poly/model_in_poly.grib
+# this variable can be specified if recumulation of model data
+# on a given interval is desired, the interval should be specified
+# as 'DDDD HH'
+TIME_PROC_INTERVAL='0 06'
+# function used in spatial processing {average|max|min}
+# default average
+#SPACE_PROC=average
