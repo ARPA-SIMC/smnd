@@ -23,7 +23,7 @@ if [ -d "$PREFIX/unibin" ]; then
     LD=`echo $PREFIX/unilib/ld*`
     cat > $PREFIX/unibin/smnd_exec.sh <<EOF
 #!/bin/sh
-export GRIB_DEFINITION_PATH=$PREFIX/share/grib_api-1.10.0/definitions
+export GRIB_DEFINITION_PATH=$PREFIX/share/grib_api/definitions
 export LOG4C_PRIORITY=600
 export WREPORT_TABLES=$PREFIX/share/wreport
 export B2NC_TABLES=$PREFIX/share/bufr2netcdf
@@ -55,7 +55,7 @@ else
 if [ -z "\$SMND_PROFILE" ]; then
 export LD_LIBRARY_PATH=\${LD_LIBRARY_PATH:+\$LD_LIBRARY_PATH:}$PREFIX/lib
 export PATH=$PREFIX/bin:\$PATH
-export GRIB_DEFINITION_PATH=$PREFIX/share/grib_api-1.10.0/definitions
+export GRIB_DEFINITION_PATH=$PREFIX/share/grib_api/definitions
 export LOG4C_PRIORITY=600
 export WREPORT_TABLES=$PREFIX/share/wreport
 export B2NC_TABLES=$PREFIX/share/bufr2netcdf

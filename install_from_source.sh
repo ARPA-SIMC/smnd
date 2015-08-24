@@ -6,13 +6,17 @@ set -e
 # the PREFIX indicates the installation path of the software
 # it can be changed to any value here before compiling
 PREFIX=$SCRATCH/smnd
-VERSION=1.8
+VERSION=0.9
 PACKAGE=smnd
-# used only for cleaning at the moment
-BUILDDIRLIST="bufr2netcdf-1.2 cnf-4.0 dballe-7.1 fortrangis-2.4 grib_api-1.10.0 libsim-6.0.2 shapelib-1.3.0 wreport-2.15"
+# list of action functions
+ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_cnf do_dballe do_fortrangis do_libsim"
+# source package specific action functions
+. ./action.sh
 
+if [ "$1" = "-d" ]; then # download and setup
+    for act in $ACTIONLIST; do $act -d; done
 
-if [ "$1" = "-b" -o -z "$1" ]; then # default action build and install
+elif [ "$1" = "-b" -o -z "$1" ]; then # default action build and install
 
 # temporarily required for compiling
 export LD_LIBRARY_PATH=$PREFIX/lib
@@ -23,85 +27,13 @@ export CPPFLAGS="-I$PREFIX/include -I$PREFIX/include/dballe"
 export LDFLAGS="-L$PREFIX/lib"
 
 mkdir -p $PREFIX
-
-# grib_api (it has to be recompiled because we are using a newer gfortran
-# compiler and the .mod are incompatible)
-tar -zxvf grib_api-1.10.0.tar.gz
-cd grib_api-1.10.0
-patch -p0 < ../grib_api-1.10.0_sharepath.diff
-rm -rf definitions
-tar -zxvf ../grib_api-1.10.0-20130304def.tar.gz
-cd definitions
-patch -p1 < ../../grib_def_all_simc.patch
-cd ..
-autoreconf -if
-./configure --with-png-support --datadir=$PREFIX/share/grib_api-1.10.0 --with-ifs-samples=$PREFIX/grib_api-1.10.0 --prefix=$PREFIX
-make
-make install
-cd ..
-
-# wreport (low level bufr decoding library)
-tar -zxvf wreport-2.15.tar.gz
-cd wreport-2.15
-./configure --disable-docs --prefix=$PREFIX
-make
-make install
-cd ..
-
-# bufr2netcdf
-tar -zxvf bufr2netcdf-1.2.tar.gz
-cd bufr2netcdf-1.2
-./configure  --prefix=$PREFIX
-make
-make install
-cd ..
-
-# cnf (old C-Fortran interface)
-tar -zxvf cnf-4.0.tar.gz
-cd cnf-4.0
-make
-make install prefix=$PREFIX
-cd ..
-
-# db-All.e (high level bufr & c. library and tools)
-tar -zxvf dballe-7.1.tar.gz
-cd dballe-7.1
-./configure --disable-dballe-python --enable-dballef --disable-docs --disable-benchmarks --prefix=$PREFIX
-make
-make install
-cd ..
-
-# shapelib (shapefile I/O C library)
-#wget http://download.osgeo.org/shapelib/shapelib-1.3.0.tar.gz
-tar -zxvf shapelib-1.3.0.tar.gz 
-cd shapelib-1.3.0/
-make
-make install PREFIX=$PREFIX
-cd ..
-
-# FortranGIS (Fortran interface to shapelib)
-#wget http://sourceforge.net/projects/fortrangis/files/fortrangis/fortrangis-2.4.tar.gz/download
-tar -zxvf fortrangis-2.4.tar.gz 
-cd fortrangis-2.4
-./configure --disable-gdal --disable-proj --disable-doxydoc --prefix=$PREFIX
-make
-make install
-cd ..
-
-# libsim (putting all together)
-tar -zxvf libsim-6.0.2.tar.gz
-cd libsim-6.0.2
-#FCFLAGS="$FCFLAGS -DDBALLELT67" ./configure --enable-f2003-features --enable-f2003-extended-features --enable-f2003-full-features --disable-log4c --disable-oraclesim --enable-alchimia --disable-ngmath --disable-ncarg --disable-netcdf --disable-doxydoc --prefix=$PREFIX
-./configure --enable-f2003-features --enable-f2003-extended-features --disable-log4c --disable-oraclesim --enable-alchimia --disable-ngmath --disable-ncarg --disable-netcdf --disable-doxydoc --prefix=$PREFIX
-make
-make install
-cd ..
+for act in $ACTIONLIST; do $act -b; done
 
 # documentation
-cd doc
-make
-make install PREFIX=$PREFIX
-cd ..
+#cd doc
+#make
+#make install PREFIX=$PREFIX
+#cd ..
 
 # manual install of the non-packaged files
 cp -p install_from_bin.sh $PREFIX
@@ -193,20 +125,25 @@ elif [ "$1" = "-s" ]; then # make a source package
     SRCPREFIX=${PWD##*/}
     cd ..
     TARNAME=${PACKAGE}-${VERSION}_src.tar.gz
-    tar -czf $TARNAME $SRCPREFIX/*.tar.gz \
-	$SRCPREFIX/*.diff \
-	$SRCPREFIX/*.patch \
-	$SRCPREFIX/*.sh \
-	$SRCPREFIX/doc/*.tex \
-	$SRCPREFIX/doc/*.eps \
-	$SRCPREFIX/doc/Makefile \
+    tar -czf $TARNAME $SRCPREFIX/*.sh \
+	$SRCPREFIX/LICENSE \
+	$SRCPREFIX/README* \
 	$SRCPREFIX/test
+
+    # tar -czf $TARNAME $SRCPREFIX/*.tar.gz \
+    # 	$SRCPREFIX/*.diff \
+    # 	$SRCPREFIX/*.patch \
+    # 	$SRCPREFIX/*.sh \
+    # 	$SRCPREFIX/doc/*.tex \
+    # 	$SRCPREFIX/doc/*.eps \
+    # 	$SRCPREFIX/doc/Makefile \
+    # 	$SRCPREFIX/test
 
     echo "A source tar package $TARNAME has been created."
 
 elif [ "$1" = "-c" ]; then # clean build directories
 
-    [ -n "$BUILDDIRLIST" ] && rm -rf $BUILDDIRLIST
-    (cd doc; make veryclean)
+    for act in $ACTIONLIST; do $act -c; done
+#    (cd doc; make veryclean)
 
 fi
