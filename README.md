@@ -3,20 +3,20 @@
 ### Software Meteorologico Normalmente Distribuito
 **Software for Meteorology Normally Distributed**, whatever this may mean
 
-SMND is a container for simplifying the build and the deployment of various meteorological software packages mainly developed by (ARPA-SIMC)[http://www.arpa.emr.it/sim]. Version 0.9 is a first working version including a Linux X86_64 universal binary release.
+SMND is a container for simplifying the build and the deployment of various meteorological software packages mainly developed by [ARPA-SIMC](http://www.arpa.emr.it/sim). Version 0.9 is a first working version including a Linux x86_64 universal binary release.
 
 The software packages involved, all open source and freely redistributable, are:
 
- - ECMWF [grib_api](https://software.ecmwf.int/wiki/display/GRIB/Home)
- - cnf C-Fortran interface part of [Starlink](http://star-www.rl.ac.uk/docs/sun209.htx/sun209.html) software package
+ - [grib_api](https://software.ecmwf.int/wiki/display/GRIB/Home) from ECMWF
+ - cnf, a C-Fortran interface part of [Starlink software package](http://star-www.rl.ac.uk/docs/sun209.htx/sun209.html)
  - [wreport](https://github.com/ARPA-SIMC/wreport)
- - [bufr2netcdf] https://github.com/ARPA-SIMC/bufr2netcdf
- - [DB.All-e] https://github.com/ARPA-SIMC/wreport
+ - [bufr2netcdf](https://github.com/ARPA-SIMC/bufr2netcdf)
+ - [DB.All-e](https://github.com/ARPA-SIMC/wreport)
  - libsim, free software but not yet published, temporary available at [ARPA-SIMC ftp server](ftp://ftp.smr.arpa.emr.it/incoming/dav/versus/)
 
 
 ## Building the software from source ##
-If you wish to build the software packages on your own, you can get a copy of the repository, either by downloading the zip file or by cloning with git, install the required list of dependency, ensure to have the gcc collection version >= 4.8 and run the following commands:
+If you wish to build the software packages on your own, you can get a copy of the repository, either by downloading the zip file or by cloning with git, install the required list of dependencies, ensure to have the gcc compiler collection version >= 4.8 and the wget command and run the following commands:
 
 ```
 # download and setup the packages
