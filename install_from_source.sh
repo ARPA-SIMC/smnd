@@ -1,11 +1,10 @@
 #!/bin/sh
 
-#set -x
 set -e
 
 # the PREFIX indicates the installation path of the software
-# it can be changed to any value here before compiling
-PREFIX=$SCRATCH/smnd
+# if not set it takes the default here
+: ${PREFIX:=$SCRATCH/smnd}
 VERSION=0.9
 PACKAGE=smnd
 # list of action functions
