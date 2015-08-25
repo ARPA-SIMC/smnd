@@ -1,7 +1,7 @@
 # SMND
 
-### Software Meteorologico Normalmente Distribuito
-**Software for Meteorology Normally Distributed**, whatever this may mean
+### Software for Meteorology Normally Distributed ###
+> whatever this may mean
 
 SMND is a container for simplifying the build and the deployment of various meteorological software packages mainly developed by [ARPA-SIMC](http://www.arpa.emr.it/sim). Version 0.9 is a first working version including a Linux x86_64 universal binary release.
 
@@ -16,7 +16,7 @@ The software packages involved, all open source and freely redistributable, are:
 
 
 ## Building the software from source ##
-If you wish to build the software packages on your own, you can get a copy of the repository, either by downloading the zip file or by cloning with git, install the required list of dependencies, ensure to have the gcc compiler collection version >= 4.8 and the wget command and run the following commands:
+If you wish to build the software packages on your own, you should download a source package in the [release section](https://github.com/dcesari/smnd/releases) of the project, install the required list of dependencies, ensure to have the gcc compiler collection version >= 4.8 and the `wget` command and run the following commands:
 
 ```
 # download and setup the packages
@@ -33,7 +33,7 @@ PREFIX=$HOME/installdir install_from_source -p
 PREFIX=$HOME/installdir install_from_source -s
 ```
 
-The build process has been tested on Fedora 20 x84_64 GNU/Linux dstribution, it is not supported on other distros/platforms at the moment.
+The build process has been tested on Fedora 20 x84_64 GNU/Linux dstribution, it is not supported on other distros/platforms at the moment. For more information, please see the relevant [wiki page](https://github.com/dcesari/smnd/wiki/BuildDoc).
 
 ## Installing the universal binary package ##
 
@@ -41,7 +41,7 @@ The most interesting feature ot this project is the universal binary package.
 
 The binary package has been built on a Fedora 20 x86_64 GNU/Linux distribution, however it contains all the necessary libraries, so that, in principle, it can work on any Linux x86_64 system with kernel 2.6.32 or newer.
 
-For installation you just have tu unpack the package and run a script:
+For installation you just have to unpack the package and run a script:
 
 ```
 # cd to the desired intallation directory and unpack the package
