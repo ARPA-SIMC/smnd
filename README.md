@@ -1,9 +1,9 @@
 # SMND
 
-### Software for Meteorology Normally Distributed ###
+## Software for Meteorology, Normally Distributed ##
 > whatever this may mean
 
-SMND is a container for simplifying the build and the deployment of various meteorological software packages mainly developed by [ARPA-SIMC](http://www.arpa.emr.it/sim). Version 0.9 is a first working version including a Linux x86_64 universal binary release.
+SMND is a container for simplifying the build and the deployment of a collection of meteorological software packages, mainly developed by [ARPA-SIMC](http://www.arpa.emr.it/sim). Version 0.9 is a first working version including a Linux x86_64 universal binary release.
 
 The software packages involved, all open source and freely redistributable, are:
 
@@ -15,27 +15,12 @@ The software packages involved, all open source and freely redistributable, are:
  - libsim, free software but not yet published, temporary available at [ARPA-SIMC ftp server](ftp://ftp.smr.arpa.emr.it/incoming/dav/versus/)
 
 
-## Building the software from source ##
-If you wish to build the software packages on your own, you should download a source package in the [release section](https://github.com/dcesari/smnd/releases) of the project, install the required list of dependencies, ensure to have the gcc compiler collection version >= 4.8 and the `wget` command and run the following commands:
+### Building the software from source ###
+If you wish to build the software packages on your own, you should download a source package in the [release section](https://github.com/dcesari/smnd/releases) of the project and follow the instructions in the relevant [wiki page](https://github.com/dcesari/smnd/wiki/BuildDoc).
 
-```
-# download and setup the packages
-install_from_source -d
-# build and install the packages in $PREFIX
-PREFIX=$HOME/installdir install_from_source -b
-# at this point you are  have an installation working locally,
-# if this is not enough you can continue with:
-# make the installation universal
-PREFIX=$HOME/installdir install_from_source -b
-# make a binary package
-PREFIX=$HOME/installdir install_from_source -p
-# make a source package
-PREFIX=$HOME/installdir install_from_source -s
-```
+The build process has been tested on Fedora 20 x84_64 GNU/Linux dstribution, it is not supported on other distros/platforms at the moment.
 
-The build process has been tested on Fedora 20 x84_64 GNU/Linux dstribution, it is not supported on other distros/platforms at the moment. For more information, please see the relevant [wiki page](https://github.com/dcesari/smnd/wiki/BuildDoc).
-
-## Installing the universal binary package ##
+### Installing the universal binary package ###
 
 The most interesting feature ot this project is the universal binary package.
 
@@ -52,6 +37,8 @@ cd smnd
 ./install_from_bin.sh
 ```
 
-Before using the software, in an interactive session, you have to source the generated profile with the command `. $HOME/smnd_profile`.
+In order to run any command of the SMND collection, you have to preliminary source the profile once with `. $HOME/smnd_profile` in the working session.
 
-The binary distribution contains various libraries in binary form from Fedora rpms, plese contact the author in order to receive the corresponding source packages for GPL compliance.
+### GPL compliance ###
+
+The universal binary distribution contains various libraries in binary form from Fedora rpms, plese contact the author in order to receive the corresponding source packages for GPL compliance.
