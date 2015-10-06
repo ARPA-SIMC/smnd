@@ -145,4 +145,8 @@ elif [ "$1" = "-c" ]; then # clean build directories
     for act in $ACTIONLIST; do $act -c; done
 #    (cd doc; make veryclean)
 
+elif [ "$1" = "-l" ]; then # clean source files
+
+    for act in $ACTIONLIST; do $act -l; done
+
 fi

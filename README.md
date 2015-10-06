@@ -1,7 +1,7 @@
 # SMND
 
 ## Software for Meteorology, Normally Distributed ##
-> whatever this may mean
+> the software for sure, often the meteorology as well
 
 SMND is a container for simplifying the build and the deployment of a collection of meteorological software packages, mainly developed by [ARPA-SIMC](http://www.arpa.emr.it/sim). Version 0.9 is a first working version including a Linux x86_64 universal binary release.
 
@@ -12,7 +12,7 @@ The software packages involved, all open source and freely redistributable, are:
  - [wreport](https://github.com/ARPA-SIMC/wreport)
  - [bufr2netcdf](https://github.com/ARPA-SIMC/bufr2netcdf)
  - [DB.All-e](https://github.com/ARPA-SIMC/wreport)
- - libsim, free software but not yet published, temporary available at [ARPA-SIMC ftp server](ftp://ftp.smr.arpa.emr.it/incoming/dav/versus/)
+ - [libsim](https://github.com/ARPA-SIMC/libsim/archive/v6.1.0-1506.tar.gz)
 
 
 ### Building the software from source ###

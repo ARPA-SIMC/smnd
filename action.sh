@@ -12,6 +12,13 @@ download_and_setup() {
     done
 }
 
+clean_source() {
+    for url in $@; do
+	file=${url##*/}
+	rm -f $file
+    done
+}
+
 do_grib_api() {
     dir=grib_api-1.13.1
     url=https://software.ecmwf.int/wiki/download/attachments/3473437/grib_api-1.13.1.tar.gz
@@ -27,6 +34,8 @@ do_grib_api() {
 	cd ..
     elif [ "$1" = "-c" ]; then
 	[ -n "$dir" ] && rm -rf $dir
+    elif [ "$1" = "-l" ]; then
+	clean_source $url
     fi
 }
 
@@ -47,6 +56,8 @@ do_wreport() {
 	cd ..
     elif [ "$1" = "-c" ]; then
 	[ -n "$dir" ] && rm -rf $dir
+    elif [ "$1" = "-l" ]; then
+	clean_source $url
     fi
 }
 
@@ -67,6 +78,8 @@ do_bufr2netcdf() {
 	cd ..
     elif [ "$1" = "-c" ]; then
 	[ -n "$dir" ] && rm -rf $dir
+    elif [ "$1" = "-l" ]; then
+	clean_source $url
     fi
 }
 
@@ -86,6 +99,8 @@ do_cnf() {
 	cd ..
     elif [ "$1" = "-c" ]; then
 	[ -n "$dir" ] && rm -rf $dir
+    elif [ "$1" = "-l" ]; then
+	clean_source $url
     fi
 }
 
@@ -107,6 +122,8 @@ do_dballe() {
 	cd ..
     elif [ "$1" = "-c" ]; then
 	[ -n "$dir" ] && rm -rf $dir
+    elif [ "$1" = "-l" ]; then
+	clean_source $url
     fi
 }
 
@@ -124,12 +141,15 @@ do_fortrangis() {
 	cd ..
     elif [ "$1" = "-c" ]; then
 	[ -n "$dir" ] && rm -rf $dir
+    elif [ "$1" = "-l" ]; then
+	clean_source $url
     fi
 }
 
 do_libsim() {
     dir=libsim-6.1.0
-    url=ftp://ftp.smr.arpa.emr.it/incoming/dav/versus/libsim-6.1.0.tar.gz
+    url=https://github.com/ARPA-SIMC/libsim/archive/v6.1.0-1506.tar.gz
+#ftp://ftp.smr.arpa.emr.it/incoming/dav/versus/libsim-6.1.0.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -141,5 +161,7 @@ do_libsim() {
 	cd ..
     elif [ "$1" = "-c" ]; then
 	[ -n "$dir" ] && rm -rf $dir
+    elif [ "$1" = "-l" ]; then
+	clean_source $url
     fi
 }
