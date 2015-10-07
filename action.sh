@@ -147,12 +147,14 @@ do_fortrangis() {
 }
 
 do_libsim() {
-    dir=libsim-6.1.0
+    dir=libsim-6.1.0-1506
     url=https://github.com/ARPA-SIMC/libsim/archive/v6.1.0-1506.tar.gz
-#ftp://ftp.smr.arpa.emr.it/incoming/dav/versus/libsim-6.1.0.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
+	cd $dir
+	autoreconf -if
+	cd ..
     elif [ "$1" = "-b" ]; then
 	cd $dir
 	./configure --enable-f2003-features --enable-f2003-extended-features --disable-log4c --disable-oraclesim --enable-alchimia --disable-ngmath --disable-ncarg --disable-netcdf --disable-doxydoc --prefix=$PREFIX
