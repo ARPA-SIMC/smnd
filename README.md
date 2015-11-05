@@ -60,5 +60,5 @@ working session.
 ### GPL compliance ###
 
 The universal binary distribution contains various libraries in binary
-form from Fedora rpms, plese contact the author in order to receive
+form from Fedora rpms, please contact the author in order to receive
 the corresponding source packages for GPL compliance.
