@@ -5,7 +5,7 @@ set -e
 # the PREFIX indicates the installation path of the software
 # if not set it takes the default here
 : ${PREFIX:=$SCRATCH/smnd}
-VERSION=0.9
+VERSION=1.0
 PACKAGE=smnd
 # list of action functions
 ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_cnf do_dballe do_fortrangis do_libsim"
@@ -41,7 +41,7 @@ mkdir -p $PREFIX/share/smnd
 cp -a test $PREFIX/share/smnd
 # clean ruins of an universal installation
 rm -f $PREFIX/unilib/* $PREFIX/unibin/*
-rmdir $PREFIX/unilib $PREFIX/unibin || true
+rmdir $PREFIX/unilib $PREFIX/unibin 2>/dev/null || true
 # create the profile for local installation
 $PREFIX/install_from_bin.sh $PREFIX
 
