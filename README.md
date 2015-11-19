@@ -1,7 +1,7 @@
 # SMND
 
 ## Software for Meteorology, Normally Distributed ##
-> the software for sure, often the meteorology as well.
+> the software for sure, the meteorological data not really.
 
 SMND is a container for simplifying the build and the deployment of a
 collection of meteorological software packages, mainly developed by
@@ -11,7 +11,8 @@ working version including a Linux x86_64 universal binary release.
 The software packages involved, all open source and freely redistributable, are:
 
  - [grib_api](https://software.ecmwf.int/wiki/display/GRIB/Home) from
- - ECMWF cnf, a C-Fortran interface part of [Starlink software
+   ECMWF
+ - cnf, a C-Fortran interface part of [Starlink software
    package](http://star-www.rl.ac.uk/docs/sun209.htx/sun209.html)
  - [wreport](https://github.com/ARPA-SIMC/wreport)
  - [bufr2netcdf](https://github.com/ARPA-SIMC/bufr2netcdf)
