@@ -24,9 +24,9 @@ The software packages involved, all open source and freely redistributable, are:
 
 If you wish to build the software packages on your own, you should
 download a source package in the [release
-section](https://github.com/dcesari/smnd/releases) of the project and
-follow the instructions in the relevant [wiki
-page](https://github.com/dcesari/smnd/wiki/BuildDoc).
+section](https://github.com/dcesari/smnd/releases) of the project, or
+clone it from the git repository, and follow the instructions in the
+relevant [wiki page](https://github.com/dcesari/smnd/wiki/BuildDoc).
 
 The build process has been tested on Fedora 20 x84_64 GNU/Linux
 dstribution, it is not supported on other distros/platforms at the
@@ -34,8 +34,9 @@ moment.
 
 ### Installing the universal binary package ###
 
-The most interesting feature ot this project is the universal binary
-package.
+The most interesting feature ot this project is however the universal
+binary package, which is also downloadable in the [release
+section](https://github.com/dcesari/smnd/releases).
 
 The binary package has been built on a Fedora 20 x86_64 GNU/Linux
 distribution, however it contains all the necessary libraries, so
