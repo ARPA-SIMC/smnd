@@ -5,7 +5,7 @@ set -e
 # the PREFIX indicates the installation path of the software
 # if not set it takes the default here
 : ${PREFIX:=$SCRATCH/smnd}
-VERSION=1.0
+VERSION=1.1
 PACKAGE=smnd
 # list of action functions
 ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_cnf do_dballe do_fortrangis do_libsim"
@@ -143,6 +143,7 @@ elif [ "$1" = "-s" ]; then # make a source package
 elif [ "$1" = "-c" ]; then # clean build directories
 
     for act in $ACTIONLIST; do $act -c; done
+    rm -rf $PREFIX/
 #    (cd doc; make veryclean)
 
 elif [ "$1" = "-l" ]; then # clean source files

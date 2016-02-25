@@ -40,8 +40,8 @@ do_grib_api() {
 }
 
 do_wreport() {
-    dir=wreport-2.15-4628
-    url=https://github.com/ARPA-SIMC/wreport/archive/v2.15-4628.tar.gz
+    dir=wreport-3.3-1
+    url=https://github.com/ARPA-SIMC/wreport/archive/v3.3-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -62,8 +62,8 @@ do_wreport() {
 }
 
 do_bufr2netcdf() {
-    dir=bufr2netcdf-1.2-3959
-    url=https://github.com/ARPA-SIMC/bufr2netcdf/archive/v1.2-3959.tar.gz
+    dir=bufr2netcdf-1.3-1
+    url=https://github.com/ARPA-SIMC/bufr2netcdf/archive/v1.3-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -105,8 +105,8 @@ do_cnf() {
 }
 
 do_dballe() {
-    dir=dballe-7.1-4837
-    url=https://github.com/ARPA-SIMC/dballe/archive/v7.1-4837.tar.gz
+    dir=dballe-7.7-2
+    url=https://github.com/ARPA-SIMC/dballe/archive/v7.7-2.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -147,8 +147,8 @@ do_fortrangis() {
 }
 
 do_libsim() {
-    dir=libsim-6.1.0-1506
-    url=https://github.com/ARPA-SIMC/libsim/archive/v6.1.0-1506.tar.gz
+    dir=libsim-6.1.5-1
+    url=https://github.com/ARPA-SIMC/libsim/archive/v6.1.5-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
