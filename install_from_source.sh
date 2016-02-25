@@ -12,7 +12,7 @@ ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_cnf do_dballe do_fortrangis
 # source package specific action functions
 . ./action.sh
 
-if [ "$1" = "-d" ]; then # download and setup
+if [ "$1" = "-d" ]; then # download and setup (unpack, autoreconf if needed)
     for act in $ACTIONLIST; do $act -d; done
 
 elif [ "$1" = "-b" -o -z "$1" ]; then # default action build and install

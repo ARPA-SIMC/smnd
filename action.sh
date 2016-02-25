@@ -105,8 +105,8 @@ do_cnf() {
 }
 
 do_dballe() {
-    dir=dballe-7.7-2
-    url=https://github.com/ARPA-SIMC/dballe/archive/v7.7-2.tar.gz
+    dir=dballe-7.8-1
+    url=https://github.com/ARPA-SIMC/dballe/archive/v7.8-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url

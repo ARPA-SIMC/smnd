@@ -5,7 +5,7 @@
 
 SMND is a container for simplifying the build and the deployment of a
 collection of meteorological software packages, mainly developed by
-[ARPA-SIMC](http://www.arpa.emr.it/sim). Version 0.9 is a first
+[Arpae-SIMC](http://www.arpa.emr.it/sim). Version 0.9 is a first
 working version including a Linux x86_64 universal binary release.
 
 The software packages involved, all open source and freely redistributable, are:
@@ -64,3 +64,10 @@ working session.
 The universal binary distribution contains various libraries in binary
 form from Fedora rpms, please contact the author in order to receive
 the corresponding source packages for GPL compliance.
+
+## SMND and SMND ##
+
+The package SMND is not related to the SMND meant as *Servizio
+Meteorologico Nazionale Distribuito*, because, according to our
+knowledge, Servizio Meteorologico Nazionale Distribuito does not exist
+yet. Please inform us when it will be created.
