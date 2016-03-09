@@ -23,15 +23,16 @@ if [ -d "$PREFIX/unibin" ]; then
     LD=`echo $PREFIX/unilib/ld*`
     cat > $PREFIX/unibin/smnd_exec.sh <<EOF
 #!/bin/sh
-export GRIB_DEFINITION_PATH=$PREFIX/share/grib_api/definitions
+: \${SMND_PREFIX:=$PREFIX}
+export GRIB_DEFINITION_PATH=\$SMND_PREFIX/share/grib_api/definitions
 export LOG4C_PRIORITY=600
-export WREPORT_TABLES=$PREFIX/share/wreport
-export B2NC_TABLES=$PREFIX/share/bufr2netcdf
-export DBA_TABLES=$PREFIX/share/wreport
-export DBA_REPINFO=$PREFIX/share/wreport/repinfo.csv
-export LIBSIM_DATA=$PREFIX/share/libsim
+export WREPORT_TABLES=\$SMND_PREFIX/share/wreport
+export B2NC_TABLES=\$SMND_PREFIX/share/bufr2netcdf
+export DBA_TABLES=\$SMND_PREFIX/share/wreport
+export DBA_REPINFO=\$SMND_PREFIX/share/wreport/repinfo.csv
+export LIBSIM_DATA=\$SMND_PREFIX/share/libsim
 CMD=\${0##*/}
-exec $LD --library-path $PREFIX/unilib:$PREFIX/lib $PREFIX/bin/\$CMD "\$@"
+exec $LD --library-path \$SMND_PREFIX/unilib:\$SMND_PREFIX/lib \$SMND_PREFIX/bin/\$CMD "\$@"
 EOF
 
     chmod +x $PREFIX/unibin/smnd_exec.sh

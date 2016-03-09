@@ -5,7 +5,7 @@ set -e
 # the PREFIX indicates the installation path of the software
 # if not set it takes the default here
 : ${PREFIX:=$SCRATCH/smnd}
-VERSION=1.1
+VERSION=1.2
 PACKAGE=smnd
 # list of action functions
 ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_cnf do_dballe do_fortrangis do_libsim"

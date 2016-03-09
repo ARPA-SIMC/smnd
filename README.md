@@ -51,13 +51,25 @@ the package and run a script:
 tar -zxvf smnd-0.9_unibin.tar.gz
 # enter the newly created directory
 cd smnd
-# complete the installation by creating the `$HOME/smnd_profile`
+# complete the installation by creating wrappers to executables
+# and the `$HOME/smnd_profile`
 ./install_from_bin.sh
 ```
 
 In order to run any command of the SMND collection, you have to
 preliminary source the profile once with `. $HOME/smnd_profile` in the
-working session.
+working session. The profile for universal installation just prepends
+`unibin/` to the `PATH` environment variable, so it can be integrated
+with the user's shell profile scripts or moved to a different
+location.
+
+If you relocate the binary installation, the `install_from_bin.sh`
+script has to be rerun from the new location. Alternatively, since
+version 1.2, it is possible to set the environment variable
+`SMND_PROFILE` to point to the root of the installation, making thus
+unnecessary the rerun of `install_from_bin.sh`. This allows to access
+the same physical installation of the package, e.g. on an nfs share,
+from different mountpoints.
 
 ### GPL compliance ###
 
