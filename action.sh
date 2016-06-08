@@ -50,7 +50,7 @@ do_wreport() {
 	cd ..
     elif [ "$1" = "-b" ]; then
 	cd $dir
-	./configure --disable-docs --prefix=$PREFIX
+	./configure --disable-docs --disable-python --prefix=$PREFIX
 	make
 	make install
 	cd ..
