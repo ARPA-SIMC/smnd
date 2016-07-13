@@ -40,8 +40,8 @@ do_grib_api() {
 }
 
 do_wreport() {
-    dir=wreport-3.3-1
-    url=https://github.com/ARPA-SIMC/wreport/archive/v3.3-1.tar.gz
+    dir=wreport-3.5-1
+    url=https://github.com/ARPA-SIMC/wreport/archive/v3.5-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -105,8 +105,8 @@ do_cnf() {
 }
 
 do_dballe() {
-    dir=dballe-7.8-1
-    url=https://github.com/ARPA-SIMC/dballe/archive/v7.8-1.tar.gz
+    dir=dballe-7.13-1
+    url=https://github.com/ARPA-SIMC/dballe/archive/v7.13-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -128,13 +128,15 @@ do_dballe() {
 }
 
 do_fortrangis() {
-    dir=fortrangis-2.4
-    url=http://sourceforge.net/projects/fortrangis/files/fortrangis/fortrangis-2.4.tar.gz
-
+#    dir=fortrangis-2.4
+#    url=http://sourceforge.net/projects/fortrangis/files/fortrangis/fortrangis-2.4.tar.gz
+    dir=fortrangis-2.6
+    url=https://github.com/dcesari/fortrangis/archive/v2.6.tar.gz
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
     elif [ "$1" = "-b" ]; then
 	cd $dir
+	autoreconf -if
 	./configure --disable-gdal --disable-proj --disable-doxydoc --prefix=$PREFIX
 	make
 	make install
@@ -147,8 +149,8 @@ do_fortrangis() {
 }
 
 do_libsim() {
-    dir=libsim-6.1.5-1
-    url=https://github.com/ARPA-SIMC/libsim/archive/v6.1.5-1.tar.gz
+    dir=libsim-6.1.7-1
+    url=https://github.com/ARPA-SIMC/libsim/archive/v6.1.7-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url

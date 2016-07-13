@@ -81,7 +81,7 @@ echo "The system libraries and links for an universal installation"
 echo "have been added in $PREFIX/uni* directories."
 echo "Run $0 -p to create a tar package for installation"
 echo "on another system."
-# create a list of rpms to ditribute for GPL-compliance
+# create a list of rpms to distribute for GPL-compliance
 if which rpm>/dev/null 2>&1; then
     for lib in `cat /tmp/liblist`; do rpm -qf $lib>>/tmp/rpmlist 2>/dev/null; done
     echo
