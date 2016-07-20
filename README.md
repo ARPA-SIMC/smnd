@@ -17,7 +17,7 @@ The software packages involved, all open source and freely redistributable, are:
  - [wreport](https://github.com/ARPA-SIMC/wreport)
  - [bufr2netcdf](https://github.com/ARPA-SIMC/bufr2netcdf)
  - [DB.All-e](https://github.com/ARPA-SIMC/wreport)
- - [libsim](https://github.com/ARPA-SIMC/libsim/archive/v6.1.0-1506.tar.gz)
+ - [libsim](https://github.com/ARPA-SIMC/libsim)
 
 
 ### Building the software from source ###
@@ -26,7 +26,7 @@ If you wish to build the software packages on your own, you should
 download a source package in the [release
 section](https://github.com/dcesari/smnd/releases) of the project, or
 clone it from the git repository, and follow the instructions in the
-relevant [wiki page](https://github.com/dcesari/smnd/wiki/BuildDoc).
+relevant [wiki page](https://github.com/ARPA-SIMC/smnd/wiki/BuildFromSource).
 
 The build process has been tested on Fedora 20 x84_64 GNU/Linux
 dstribution, it is not supported on other distros/platforms at the
