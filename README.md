@@ -3,10 +3,10 @@
 ## Software for Meteorology, Normally Distributed ##
 > the software for sure, the meteorological data not really.
 
-SMND is a container for simplifying the build and the deployment of a
+SMND is a helper for simplifying the build and the deployment of a
 collection of meteorological software packages, mainly developed by
-[Arpae-SIMC](http://www.arpa.emr.it/sim). Version 0.9 is a first
-working version including a Linux x86_64 universal binary release.
+[Arpae-SIMC](http://www.arpa.emr.it/sim). The current version is
+relatively stable, including the universal binary package.
 
 The software packages involved, all open source and freely redistributable, are:
 
@@ -28,8 +28,8 @@ section](https://github.com/dcesari/smnd/releases) of the project, or
 clone it from the git repository, and follow the instructions in the
 relevant [wiki page](https://github.com/ARPA-SIMC/smnd/wiki/BuildFromSource).
 
-The build process has been tested on Fedora 20 x84_64 GNU/Linux
-dstribution, it is not supported on other distros/platforms at the
+The build process has been tested on Fedora 20 and on CentOS 7 x84_64 GNU/Linux
+dstributions, it is not supported on other distros/platforms at the
 moment.
 
 ### Installing the universal binary package ###
@@ -70,6 +70,10 @@ version 1.2, it is possible to set the environment variable
 unnecessary the rerun of `install_from_bin.sh`. This allows to access
 the same physical installation of the package, e.g. on an nfs share,
 from different mountpoints.
+
+The binary installation turns out to be a self-made container, using the
+current slang. It may be distributed as a container of some known
+standard in the future.
 
 ### GPL compliance ###
 
