@@ -142,7 +142,8 @@ elif [ "$1" = "-s" ]; then # make a source package
     # 	$SRCPREFIX/doc/Makefile \
     # 	$SRCPREFIX/test
 
-    echo "A source tar package $TARNAME has been created."
+    echo "A source tar package $TARNAME has been created"
+    echo "in upper-level directory."
 
 elif [ "$1" = "-c" ]; then # clean build directories
 
