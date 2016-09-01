@@ -8,8 +8,7 @@ set -e
 VERSION=1.3
 PACKAGE=smnd
 # list of action functions
-ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_cnf do_dballe do_fortrangis do_libsim"
-ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_dballe do_fortrangis do_libsim"
+ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_dballe do_arkimet do_fortrangis do_libsim"
 # source package specific action functions
 . ./action.sh
 

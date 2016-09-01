@@ -83,27 +83,6 @@ do_bufr2netcdf() {
     fi
 }
 
-do_cnf() {
-    dir=cnf-4.0
-    url="http://ftp.debian.org/debian/pool/main/c/cnf/cnf_4.0.orig.tar.gz http://ftp.debian.org/debian/pool/main/c/cnf/cnf_4.0-2.diff.gz"
-
-    if [ "$1" = "-d" ]; then
-	download_and_setup $url
-	cd $dir
-	gunzip -c ../cnf_4.0-2.diff.gz | patch -p1
-	cd ..
-    elif [ "$1" = "-b" ]; then
-	cd $dir
-	make
-	make install prefix=$PREFIX
-	cd ..
-    elif [ "$1" = "-c" ]; then
-	[ -n "$dir" ] && rm -rf $dir
-    elif [ "$1" = "-l" ]; then
-	clean_source $url
-    fi
-}
-
 do_dballe() {
     dir=dballe-7.16-1
     url=https://github.com/ARPA-SIMC/dballe/archive/v7.16-1.tar.gz
@@ -128,8 +107,10 @@ do_dballe() {
 }
 
 do_arkimet() {
-    dir=arkimet-1.0-11
-    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.0-11.tar.gz
+#    dir=arkimet-1.0-11
+#    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.0-11.tar.gz
+    dir=arkimet-master
+    url=https://github.com/ARPA-SIMC/arkimet/archive/master.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -138,7 +119,8 @@ do_arkimet() {
 	cd ..
     elif [ "$1" = "-b" ]; then
 	cd $dir
-	./configure --disable-static --enable-bufr --disable-vm2 --disable-geos --disable-python --prefix=$PREFIX
+# --disable-geos
+	./configure --disable-static --enable-bufr --disable-vm2 --disable-python --prefix=$PREFIX
 	make
 	make install
 	cd ..
@@ -150,8 +132,6 @@ do_arkimet() {
 }
 
 do_fortrangis() {
-#    dir=fortrangis-2.4
-#    url=http://sourceforge.net/projects/fortrangis/files/fortrangis/fortrangis-2.4.tar.gz
     dir=fortrangis-2.6
     url=https://github.com/dcesari/fortrangis/archive/v2.6.tar.gz
     if [ "$1" = "-d" ]; then
