@@ -5,7 +5,7 @@ set -e
 # the PREFIX indicates the installation path of the software
 # if not set it takes the default here
 : ${PREFIX:=$SCRATCH/smnd}
-VERSION=1.3
+VERSION=2.0
 PACKAGE=smnd
 # list of action functions
 ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_dballe do_arkimet do_fortrangis do_libsim"
@@ -65,7 +65,7 @@ rm -f /tmp/liblist /tmp/rpmlist
 for file in $PREFIX/bin/*; do ldd $file |sed -e 's/^.*>//g' -e 's/ (.*$//g' -e 's/^[ \t]*//g' -e 's/^[^/].*$//g'| egrep -v "$PREFIX|not a dynamic"; done | sort | uniq > /tmp/liblist
 for lib in `cat /tmp/liblist`; do cp -p $lib $PREFIX/unilib; done
 
-# create wrappers to executables
+# create links to executables' wrapper
 for file in $PREFIX/bin/*
 do if file $file|grep -q 'ELF.*executable'; then
 	ln -s smnd_exec.sh $PREFIX/unibin/${file##*/}
@@ -74,6 +74,26 @@ do if file $file|grep -q 'ELF.*executable'; then
 #	cp -p $file $PREFIX/unibin
     fi
 done
+
+# create executables' wrapper
+LD=`echo $PREFIX/unilib/ld*`
+LD=${LD##*/}
+
+cat > $PREFIX/unibin/smnd_exec.sh <<EOF
+#!/bin/sh
+export GRIB_DEFINITION_PATH=\$SMND_PREFIX/share/grib_api/definitions
+export LOG4C_PRIORITY=600
+export WREPORT_TABLES=\$SMND_PREFIX/share/wreport
+export B2NC_TABLES=\$SMND_PREFIX/share/bufr2netcdf
+export DBA_TABLES=\$SMND_PREFIX/share/wreport
+export DBA_REPINFO=\$SMND_PREFIX/share/wreport/repinfo.csv
+export LIBSIM_DATA=\$SMND_PREFIX/share/libsim
+CMD=\${0##*/}
+exec \$SMND_PREFIX/unilib/$LD --library-path \$SMND_PREFIX/unilib:\$SMND_PREFIX/lib \$SMND_PREFIX/bin/\$CMD "\$@"
+EOF
+
+chmod +x $PREFIX/unibin/smnd_exec.sh
+
 # create the profile for universal installation
 $PREFIX/install_from_bin.sh $PREFIX
 

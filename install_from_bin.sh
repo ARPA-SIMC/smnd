@@ -18,31 +18,13 @@ fi
 
 if [ -d "$PREFIX/unibin" ]; then
 
-    echo "Completing the universal installation under path $PREFIX"
-
-    LD=`echo $PREFIX/unilib/ld*`
-    cat > $PREFIX/unibin/smnd_exec.sh <<EOF
-#!/bin/sh
-: \${SMND_PREFIX:=$PREFIX}
-export GRIB_DEFINITION_PATH=\$SMND_PREFIX/share/grib_api/definitions
-export LOG4C_PRIORITY=600
-export WREPORT_TABLES=\$SMND_PREFIX/share/wreport
-export B2NC_TABLES=\$SMND_PREFIX/share/bufr2netcdf
-export DBA_TABLES=\$SMND_PREFIX/share/wreport
-export DBA_REPINFO=\$SMND_PREFIX/share/wreport/repinfo.csv
-export LIBSIM_DATA=\$SMND_PREFIX/share/libsim
-CMD=\${0##*/}
-exec $LD --library-path \$SMND_PREFIX/unilib:\$SMND_PREFIX/lib \$SMND_PREFIX/bin/\$CMD "\$@"
-EOF
-
-    chmod +x $PREFIX/unibin/smnd_exec.sh
-
     echo "Creating profile in $HOME/smnd_profile for"
     echo "universal installation under path $PREFIX"
 
     cat <<EOF > $HOME/smnd_profile
 if [ -z "\$SMND_PROFILE" ]; then
 export PATH=$PREFIX/unibin:\$PATH
+export SMND_PREFIX=$PREFIX
 export SMND_PROFILE=1
 fi
 EOF

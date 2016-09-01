@@ -3,34 +3,30 @@
 ## Software for Meteorology, Normally Distributed ##
 > the software for sure, the meteorological data not really.
 
-SMND is a helper for simplifying the build and the deployment of a
-collection of meteorological software packages, mainly developed by
-[Arpae-SIMC](http://www.arpa.emr.it/sim). The current version is
+SMND is a helper package for simplifying the build and the deployment
+of a collection of meteorological software packages, mainly developed
+by [Arpae-SIMC](http://www.arpa.emr.it/sim). The current version is
 relatively stable, including the universal binary package.
 
 The software packages involved, all open source and freely redistributable, are:
 
  - [grib_api](https://software.ecmwf.int/wiki/display/GRIB/Home) from
    ECMWF
- - cnf, a C-Fortran interface part of [Starlink software
-   package](http://star-www.rl.ac.uk/docs/sun209.htx/sun209.html)
  - [wreport](https://github.com/ARPA-SIMC/wreport)
  - [bufr2netcdf](https://github.com/ARPA-SIMC/bufr2netcdf)
  - [DB.All-e](https://github.com/ARPA-SIMC/wreport)
+ - [arkimet](https://github.com/ARPA-SIMC/arkimet)
  - [libsim](https://github.com/ARPA-SIMC/libsim)
-
 
 ### Building the software from source ###
 
-If you wish to build the software packages on your own, you should
-download a source package in the [release
-section](https://github.com/dcesari/smnd/releases) of the project, or
-clone it from the git repository, and follow the instructions in the
-relevant [wiki page](https://github.com/ARPA-SIMC/smnd/wiki/BuildFromSource).
+If you wish to build the software packages on your own, please follow
+the instructions in the relevant [wiki
+page](https://github.com/ARPA-SIMC/smnd/wiki/BuildFromSource).
 
-The build process has been tested on Fedora 20 and on CentOS 7 x84_64 GNU/Linux
-dstributions, it is not supported on other distros/platforms at the
-moment.
+The build process has been tested on Fedora 20 and 24 and on CentOS 7
+x84_64 GNU/Linux dstributions, it is not supported on other
+distros/platforms at the moment.
 
 ### Installing the universal binary package ###
 
@@ -64,16 +60,20 @@ with the user's shell profile scripts or moved to a different
 location.
 
 If you relocate the binary installation, the `install_from_bin.sh`
-script has to be rerun from the new location. Alternatively, since
-version 1.2, it is possible to set the environment variable
-`SMND_PROFILE` to point to the root of the installation, making thus
-unnecessary the rerun of `install_from_bin.sh`. This allows to access
-the same physical installation of the package, e.g. on an nfs share,
-from different mountpoints.
+script has to be rerun from the new location.
 
-The binary installation turns out to be a self-made container, using the
-current slang. It may be distributed as a container of some known
-standard in the future.
+Before version 2.0, a single universal binary installation, after
+running the `install_from_bin.sh` script, records an hardcoded value
+of the absolute installation path, so it is usable only if reached
+under that path. Since version 2.0 it is possible to access the same
+physical installation from different paths, e.g. when it is on an nfs
+share having different mountpoints on different systems; for that
+purpose, the `install_from_bin.sh` should be run from within every
+system involved for creating a specialized `smnd_profile` file.
+
+The binary installation turns out to be a self-made container,
+according to the current IT slang. It may be distributed as a real
+container of some known standard in the future.
 
 ### GPL compliance ###
 
