@@ -9,6 +9,7 @@ VERSION=1.3
 PACKAGE=smnd
 # list of action functions
 ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_cnf do_dballe do_fortrangis do_libsim"
+ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_dballe do_fortrangis do_libsim"
 # source package specific action functions
 . ./action.sh
 
@@ -95,10 +96,11 @@ rm -f /tmp/liblist
 
 elif [ "$1" = "-p" ]; then # make a package
 
-    cd $PREFIX/..
     if [ -d "$PREFIX/unibin" ]; then # it's an universal install
 	TARNAME=${PACKAGE}-${VERSION}_unibin.tar.gz
-	tar -czf $TARNAME ${PREFIX##*/}
+	tar -C $PREFIX/.. -czf $TARNAME \
+	    --exclude=${PREFIX##*/}/include --exclude=${PREFIX##*/}/share/doc \
+	    ${PREFIX##*/}
 
 	echo "An universal installation tar package $TARNAME"
 	echo "has been created."
@@ -109,7 +111,9 @@ elif [ "$1" = "-p" ]; then # make a package
 
     else
 	TARNAME=${PACKAGE}-${VERSION}_bin.tar.gz
-	tar -czf $TARNAME ${PREFIX##*/}
+	tar -C $PREFIX/.. -czf $TARNAME \
+	    --exclude=${PREFIX##*/}/include --exclude=${PREFIX##*/}/share/doc \
+	    ${PREFIX##*/}
 
 	echo "A specific installation tar package $TARNAME"
 	echo "has been created."
