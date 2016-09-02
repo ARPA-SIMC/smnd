@@ -14,7 +14,7 @@ The software packages involved, all open source and freely redistributable, are:
    ECMWF
  - [wreport](https://github.com/ARPA-SIMC/wreport)
  - [bufr2netcdf](https://github.com/ARPA-SIMC/bufr2netcdf)
- - [DB.All-e](https://github.com/ARPA-SIMC/wreport)
+ - [DB.All-e](https://github.com/ARPA-SIMC/dballe)
  - [arkimet](https://github.com/ARPA-SIMC/arkimet)
  - [libsim](https://github.com/ARPA-SIMC/libsim)
 
