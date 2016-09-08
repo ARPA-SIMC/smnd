@@ -107,10 +107,10 @@ do_dballe() {
 }
 
 do_arkimet() {
-#    dir=arkimet-1.0-11
-#    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.0-11.tar.gz
-    dir=arkimet-master
-    url=https://github.com/ARPA-SIMC/arkimet/archive/master.tar.gz
+    dir=arkimet-1.0-12
+    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.0-12.tar.gz
+#    dir=arkimet-master
+#    url=https://github.com/ARPA-SIMC/arkimet/archive/master.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -119,8 +119,7 @@ do_arkimet() {
 	cd ..
     elif [ "$1" = "-b" ]; then
 	cd $dir
-# --disable-geos
-	./configure --disable-static --enable-bufr --disable-vm2 --disable-python --prefix=$PREFIX
+	./configure --disable-static --enable-bufr --disable-vm2 --disable-geos --disable-python --prefix=$PREFIX
 	make
 	make install
 	cd ..
