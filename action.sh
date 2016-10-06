@@ -151,8 +151,8 @@ do_fortrangis() {
 }
 
 do_libsim() {
-    dir=libsim-6.1.9-1
-    url=https://github.com/ARPA-SIMC/libsim/archive/v6.1.9-1.tar.gz
+    dir=libsim-6.1.10-1
+    url=https://github.com/ARPA-SIMC/libsim/archive/v6.1.10-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
