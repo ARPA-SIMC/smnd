@@ -1,4 +1,5 @@
-# action function specific to every package (download, build and clean)
+# action function specific to every package ([d]ownload, [b]uild,
+# [c]lean source tree, c[l]ean source package)
 
 download_and_setup() {
     for url in $@; do
@@ -107,8 +108,8 @@ do_dballe() {
 }
 
 do_arkimet() {
-    dir=arkimet-1.0-12
-    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.0-12.tar.gz
+    dir=arkimet-1.0-15
+    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.0-15.tar.gz
 #    dir=arkimet-master
 #    url=https://github.com/ARPA-SIMC/arkimet/archive/master.tar.gz
 
@@ -164,6 +165,35 @@ do_libsim() {
 	make
 	make install
 	cd ..
+    elif [ "$1" = "-c" ]; then
+	[ -n "$dir" ] && rm -rf $dir
+    elif [ "$1" = "-l" ]; then
+	clean_source $url
+    fi
+}
+
+do_ma_utils() {
+    dir=ma_utils-0.12
+    url=ma_utils-0.12.tar.gz
+
+    if [ "$1" = "-d" ]; then
+	if [ -f "$url" ]; then
+	    download_and_setup $url
+	fi
+    elif [ "$1" = "-b" ]; then
+	if [ -f "$url" ]; then
+	    cd $dir
+	    ./configure --enable-smnd-build --prefix=$PREFIX
+	    make
+	    make install
+# link in bin/ executables in libexec/ for simplifying universal installation
+	    for path in $PREFIX/libexec/ma_utils/*; do
+		if [ -f "$path" ]; then
+		    file=${path##*/}
+		    ln -s ../libexec/ma_utils/$file $PREFIX/bin
+		fi
+	    cd ..
+	fi
     elif [ "$1" = "-c" ]; then
 	[ -n "$dir" ] && rm -rf $dir
     elif [ "$1" = "-l" ]; then

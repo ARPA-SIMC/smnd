@@ -8,7 +8,7 @@ set -e
 VERSION=2.0
 PACKAGE=smnd
 # list of action functions
-ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_dballe do_arkimet do_fortrangis do_libsim"
+ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_dballe do_arkimet do_fortrangis do_libsim do_ma_utils"
 # source package specific action functions
 . ./action.sh
 
@@ -89,6 +89,16 @@ export B2NC_TABLES=\$SMND_PREFIX/share/bufr2netcdf
 export DBA_TABLES=\$SMND_PREFIX/share/wreport
 export DBA_REPINFO=\$SMND_PREFIX/share/wreport/repinfo.csv
 export LIBSIM_DATA=\$SMND_PREFIX/share/libsim
+export ARKI_SCAN_GRIB1=\$SMND_PREFIX/etc/arkimet/scan-grib1
+export ARKI_SCAN_GRIB2=\$SMND_PREFIX/etc/arkimet/scan-grib2
+export ARKI_SCAN_BUFR=\$SMND_PREFIX/etc/arkimet/scan-bufr
+export ARKI_SCAN_ODIMH5=\$SMND_PREFIX/etc/arkimet/scan-odimh5
+export ARKI_FORMATTER=\$SMND_PREFIX/etc/arkimet/format
+export ARKI_REPORT=\$SMND_PREFIX/etc/arkimet/report
+export ARKI_BBOX=\$SMND_PREFIX/etc/arkimet/bbox
+export ARKI_QMACRO=\$SMND_PREFIX/etc/arkimet/qmacro
+export ARKI_TARGETFILE=\$SMND_PREFIX/etc/arkimet/targetfile
+export ARKI_ALIASES=\$SMND_PREFIX/etc/arkimet/match-alias.conf
 CMD=\${0##*/}
 exec \$SMND_PREFIX/unilib/$LD --library-path \$SMND_PREFIX/unilib:\$SMND_PREFIX/lib \$SMND_PREFIX/bin/\$CMD "\$@"
 EOF
