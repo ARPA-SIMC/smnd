@@ -44,7 +44,7 @@ the package and run a script:
 
 ```
 # cd to the desired intallation directory and unpack the package
-tar -zxvf smnd-0.9_unibin.tar.gz
+tar -zxvf smnd-*.*_unibin.tar.gz
 # enter the newly created directory
 cd smnd
 # complete the installation by creating wrappers to executables
