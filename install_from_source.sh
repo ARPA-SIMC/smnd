@@ -5,7 +5,7 @@ set -e
 # the PREFIX indicates the installation path of the software
 # if not set it takes the default here
 : ${PREFIX:=$SCRATCH/smnd}
-VERSION=2.0
+VERSION=2.1
 PACKAGE=smnd
 # list of action functions
 ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_dballe do_arkimet do_fortrangis do_libsim do_ma_utils"
@@ -67,7 +67,7 @@ for lib in `cat /tmp/liblist`; do cp -p $lib $PREFIX/unilib; done
 
 # create links to executables' wrapper
 for file in $PREFIX/bin/*
-do if file $file|grep -q 'ELF.*executable'; then
+do if file -L $file|grep -q 'ELF.*executable'; then
 	ln -s smnd_exec.sh $PREFIX/unibin/${file##*/}
     else
 	ln -s ../bin/${file##*/} $PREFIX/unibin
@@ -98,7 +98,8 @@ export ARKI_REPORT=\$SMND_PREFIX/etc/arkimet/report
 export ARKI_BBOX=\$SMND_PREFIX/etc/arkimet/bbox
 export ARKI_QMACRO=\$SMND_PREFIX/etc/arkimet/qmacro
 export ARKI_TARGETFILE=\$SMND_PREFIX/etc/arkimet/targetfile
-export ARKI_ALIASES=\$SMND_PREFIX/etc/arkimet/match-alias.conf
+: \${ARKI_ALIASES:=\$SMND_PREFIX/etc/arkimet/match-alias.conf}
+export ARKI_ALIASES
 CMD=\${0##*/}
 exec \$SMND_PREFIX/unilib/$LD --library-path \$SMND_PREFIX/unilib:\$SMND_PREFIX/lib \$SMND_PREFIX/bin/\$CMD "\$@"
 EOF
