@@ -192,6 +192,7 @@ do_ma_utils() {
 		    file=${path##*/}
 		    ln -s ../libexec/ma_utils/$file $PREFIX/bin
 		fi
+	    done
 	    cd ..
 	fi
     elif [ "$1" = "-c" ]; then
