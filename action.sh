@@ -126,6 +126,7 @@ do_arkimet() {
 	cd $dir
 	# patch for old linux versions
 	sed -e '19i#undef F_OFD_SETLKW\n#undef F_OFD_SETLK' -i arki/dataset/local.cc
+	sed -e '14i#undef F_OFD_SETLKW\n#undef F_OFD_SETLK' -i arki/utils/sys.cc
 	autoreconf -if
 	cd ..
     elif [ "$1" = "-b" ]; then
@@ -200,6 +201,7 @@ do_ma_utils() {
 	    for path in $PREFIX/libexec/ma_utils/*; do
 		if [ -f "$path" ]; then
 		    file=${path##*/}
+		    rm -f $PREFIX/bin/$file
 		    ln -s ../libexec/ma_utils/$file $PREFIX/bin
 		fi
 	    done
