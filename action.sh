@@ -3,7 +3,15 @@
 
 download_and_setup() {
     for url in $@; do
+	# get file from url
 	file=${url##*/}
+	# get package name from unpack dir
+	name=${dir%%-*}
+	# if file from url is not unique, prepend package name
+	tarname=${file%%-*}
+	if [ "$tarname" != "$name" ]; then
+	    file=$name$file
+	fi
 	[ -f "$file" ] || wget -O $file $url
 	if [  "${file%tar.gz}" != "$file" ]; then
 	    tar -zxvf $file
@@ -108,14 +116,16 @@ do_dballe() {
 }
 
 do_arkimet() {
-    dir=arkimet-1.0-15
-    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.0-15.tar.gz
+    dir=arkimet-1.3-1
+    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.3-1.tar.gz
 #    dir=arkimet-master
 #    url=https://github.com/ARPA-SIMC/arkimet/archive/master.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
 	cd $dir
+	# patch for old linux versions
+	sed -e '19i#undef F_OFD_SETLKW\n#undef F_OFD_SETLK' -i arki/dataset/local.cc
 	autoreconf -if
 	cd ..
     elif [ "$1" = "-b" ]; then
@@ -151,8 +161,8 @@ do_fortrangis() {
 }
 
 do_libsim() {
-    dir=libsim-6.1.10-1
-    url=https://github.com/ARPA-SIMC/libsim/archive/v6.1.10-1.tar.gz
+    dir=libsim-6.1.15-1
+    url=https://github.com/ARPA-SIMC/libsim/archive/v6.1.15-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url

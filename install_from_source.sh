@@ -5,8 +5,12 @@ set -e
 # the PREFIX indicates the installation path of the software
 # if not set it takes the default here
 : ${PREFIX:=$SCRATCH/smnd}
-VERSION=2.1
+VERSION=2.2
 PACKAGE=smnd
+EXTRA_LIBRARIES1="libnss_files libnss_dns libnss_myhostname libcap libdw libattr libelf liblzma libbz2"
+EXTRA_LIBRARIES2="libsoftokn3 libfreeblpriv3 libnsssysinit"
+LIBDIR=/usr/lib64
+
 # list of action functions
 ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_dballe do_arkimet do_fortrangis do_libsim do_ma_utils"
 # source package specific action functions
@@ -64,7 +68,10 @@ unset LANG
 rm -f /tmp/liblist /tmp/rpmlist
 for file in $PREFIX/bin/*; do ldd $file |sed -e 's/^.*>//g' -e 's/ (.*$//g' -e 's/^[ \t]*//g' -e 's/^[^/].*$//g'| egrep -v "$PREFIX|not a dynamic"; done | sort | uniq > /tmp/liblist
 for lib in `cat /tmp/liblist`; do cp -p $lib $PREFIX/unilib; done
-
+# extra dl-opened libraries (empirically determined)
+for lib in $EXTRA_LIBRARIES1; do cp -p $LIBDIR/$lib.so.* $PREFIX/unilib; done
+# special treatment
+for lib in $EXTRA_LIBRARIES2; do cp -p $LIBDIR/$lib.* $PREFIX/unilib; done
 # create links to executables' wrapper
 for file in $PREFIX/bin/*
 do if file -L $file|grep -q 'ELF.*executable'; then
