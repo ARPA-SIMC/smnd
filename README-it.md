@@ -17,6 +17,4 @@ Riferirsi al file README.md in inglese per maggiori informazioni.
 ## SMND e SMND ##
 
 Il pacchetto software SMND non ha nessun legame con il **Servizio
-Meteorologico Nazionale Distribuito** in quanto il Servizio
-Meteorologico Nazionale Distribuito non esiste. Si pregano i
-competenti organi di informarci quando esso verrà istituito.
+Meteorologico Nazionale Distribuito** che al momento non esiste.

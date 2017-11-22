@@ -84,11 +84,8 @@ the corresponding source packages for GPL compliance.
 ## SMND and SMND ##
 
 The package SMND is not related to the **SMND** meant as the Italian
-*Servizio Meteorologico Nazionale Distribuito*, because, according to
-our knowledge, Servizio Meteorologico Nazionale Distribuito does not
-exist. Please inform us when it will be created.
+*Servizio Meteorologico Nazionale Distribuito*, which does not exist
+at the moment.
 
 > Il pacchetto software SMND non ha nessun legame con il **Servizio
-> Meteorologico Nazionale Distribuito** in quanto il Servizio
-> Meteorologico Nazionale Distribuito non esiste. Si pregano i
-> competenti organi di informarci quando esso verrà istituito.
+> Meteorologico Nazionale Distribuito** che al momento non esiste.
