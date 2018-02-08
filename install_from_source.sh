@@ -2,14 +2,15 @@
 
 set -e
 
-# the PREFIX indicates the installation path of the software
-# if not set it takes the default here
-: ${PREFIX:=$SCRATCH/smnd}
-VERSION=2.2
+VERSION=2.3
 PACKAGE=smnd
 EXTRA_LIBRARIES1="libnss_files libnss_dns libnss_myhostname libcap libdw libattr libelf liblzma libbz2"
 EXTRA_LIBRARIES2="libsoftokn3 libfreeblpriv3 libnsssysinit"
 LIBDIR=/usr/lib64
+
+# the PREFIX indicates the installation path of the software
+# if not set it takes the default here
+: ${PREFIX:=$SCRATCH/$PACKAGE-$VERSION}
 
 # list of action functions
 ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_dballe do_arkimet do_fortrangis do_libsim do_ma_utils"
@@ -184,9 +185,8 @@ elif [ "$1" = "-s" ]; then # make a source package
     echo "in upper-level directory."
 
 elif [ "$1" = "-c" ]; then # clean build directories
-
     for act in $ACTIONLIST; do $act -c; done
-    rm -rf $PREFIX/
+    [ -n "$PREFIX" -a "$PREFIX" != "/" ] && rm -rf $PREFIX/
 #    (cd doc; make veryclean)
 
 elif [ "$1" = "-l" ]; then # clean source files

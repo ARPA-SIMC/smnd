@@ -29,8 +29,8 @@ clean_source() {
 }
 
 do_grib_api() {
-    dir=grib_api-1.13.1
-    url=https://software.ecmwf.int/wiki/download/attachments/3473437/grib_api-1.13.1.tar.gz
+    dir=grib_api-1.16.0-Source
+    url=https://software.ecmwf.int/wiki/download/attachments/3473437/grib_api-1.16.0-Source.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -49,8 +49,8 @@ do_grib_api() {
 }
 
 do_wreport() {
-    dir=wreport-3.6-1
-    url=https://github.com/ARPA-SIMC/wreport/archive/v3.6-1.tar.gz
+    dir=wreport-3.9-1
+    url=https://github.com/ARPA-SIMC/wreport/archive/v3.9-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -71,8 +71,8 @@ do_wreport() {
 }
 
 do_bufr2netcdf() {
-    dir=bufr2netcdf-1.3-1
-    url=https://github.com/ARPA-SIMC/bufr2netcdf/archive/v1.3-1.tar.gz
+    dir=bufr2netcdf-1.4-1
+    url=https://github.com/ARPA-SIMC/bufr2netcdf/archive/v1.4-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -93,8 +93,8 @@ do_bufr2netcdf() {
 }
 
 do_dballe() {
-    dir=dballe-7.16-1
-    url=https://github.com/ARPA-SIMC/dballe/archive/v7.16-1.tar.gz
+    dir=dballe-7.27-1
+    url=https://github.com/ARPA-SIMC/dballe/archive/v7.27-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -116,8 +116,8 @@ do_dballe() {
 }
 
 do_arkimet() {
-    dir=arkimet-1.3-1
-    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.3-1.tar.gz
+    dir=arkimet-1.6-1
+    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.6-1.tar.gz
 #    dir=arkimet-master
 #    url=https://github.com/ARPA-SIMC/arkimet/archive/master.tar.gz
 
@@ -131,7 +131,8 @@ do_arkimet() {
 	cd ..
     elif [ "$1" = "-b" ]; then
 	cd $dir
-	./configure --disable-static --enable-bufr --disable-vm2 --disable-geos --disable-python --prefix=$PREFIX
+#	./configure --disable-static --enable-bufr --disable-vm2 --disable-geos --disable-python --prefix=$PREFIX
+	./configure --disable-static --enable-bufr --disable-vm2 --disable-python --prefix=$PREFIX
 	make
 	make install
 	cd ..
@@ -162,8 +163,8 @@ do_fortrangis() {
 }
 
 do_libsim() {
-    dir=libsim-6.1.15-1
-    url=https://github.com/ARPA-SIMC/libsim/archive/v6.1.15-1.tar.gz
+    dir=libsim-6.2.3-1
+    url=https://github.com/ARPA-SIMC/libsim/archive/v6.2.3-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
