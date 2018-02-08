@@ -33,12 +33,6 @@ export LDFLAGS="-L$PREFIX/lib"
 mkdir -p $PREFIX
 for act in $ACTIONLIST; do $act -b; done
 
-# documentation
-#cd doc
-#make
-#make install PREFIX=$PREFIX
-#cd ..
-
 # manual install of the non-packaged files
 cp -p install_from_bin.sh $PREFIX
 cp -p smnd_preprocess.sh $PREFIX/bin
@@ -79,11 +73,10 @@ do if file -L $file|grep -q 'ELF.*executable'; then
 	ln -s smnd_exec.sh $PREFIX/unibin/${file##*/}
     else
 	ln -s ../bin/${file##*/} $PREFIX/unibin
-#	cp -p $file $PREFIX/unibin
     fi
 done
 
-# create executables' wrapper
+# create executables wrapper
 LD=`echo $PREFIX/unilib/ld*`
 LD=${LD##*/}
 
@@ -172,22 +165,12 @@ elif [ "$1" = "-s" ]; then # make a source package
 	$SRCPREFIX/README* \
 	$SRCPREFIX/test
 
-    # tar -czf $TARNAME $SRCPREFIX/*.tar.gz \
-    # 	$SRCPREFIX/*.diff \
-    # 	$SRCPREFIX/*.patch \
-    # 	$SRCPREFIX/*.sh \
-    # 	$SRCPREFIX/doc/*.tex \
-    # 	$SRCPREFIX/doc/*.eps \
-    # 	$SRCPREFIX/doc/Makefile \
-    # 	$SRCPREFIX/test
-
     echo "A source tar package $TARNAME has been created"
     echo "in upper-level directory."
 
 elif [ "$1" = "-c" ]; then # clean build directories
     for act in $ACTIONLIST; do $act -c; done
     [ -n "$PREFIX" -a "$PREFIX" != "/" ] && rm -rf $PREFIX/
-#    (cd doc; make veryclean)
 
 elif [ "$1" = "-l" ]; then # clean source files
 

@@ -185,8 +185,8 @@ do_libsim() {
 }
 
 do_ma_utils() {
-    dir=ma_utils-0.12
-    url=ma_utils-0.12.tar.gz
+    dir=ma_utils-0.13
+    url=ma_utils-0.13.tar.gz
 
     if [ "$1" = "-d" ]; then
 	if [ -f "$url" ]; then
