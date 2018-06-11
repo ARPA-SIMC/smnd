@@ -34,7 +34,7 @@ The most interesting feature ot this project is however the universal
 binary package, which is also downloadable in the [release
 section](https://github.com/dcesari/smnd/releases).
 
-The binary package has been built on a Fedora 20 x86_64 GNU/Linux
+The binary package has been built on a Fedora 24 x86_64 GNU/Linux
 distribution, however it contains all the necessary libraries, so
 that, in principle, it can work on any Linux x86_64 system with kernel
 2.6.32 or newer.
@@ -71,15 +71,108 @@ share having different mountpoints on different systems; for that
 purpose, the `install_from_bin.sh` should be run from within every
 system involved for creating a specialized `smnd_profile` file.
 
-The binary installation turns out to be a self-made container,
-according to the current IT slang. It may be distributed as a real
-container of some known standard in the future.
+The binary installation turns out to be a self-made container. For the
+use within a real container, please read further.
 
 ### GPL compliance ###
 
 The universal binary distribution contains various libraries in binary
 form from Fedora rpms, please contact the author in order to receive
 the corresponding source packages for GPL compliance.
+
+### SMND within a container ###
+
+The project provides also 3 container definition files to help using,
+building **with** or building the software on one's own:
+
+ * `centos7-smnd-run.def` allows to run the tools of smnd package
+   within a CentOS 7 container, more or less eqivalent to the unibin
+   package
+
+ * `centos7-smnd-devel.def` allows to build and run software that
+   makes use of the C/C++/Fortran libraries provided by the various
+   smnd package (wreport, DB-All.e, arkimet, libsim) within a CentOS 7
+   container
+
+ * `centos7-smnd-build.def` provides an environment where you can
+   build all the smnd software from source.
+
+The first and second containers make use of the precompiled packages
+in the SIMC
+[copr](https://copr.fedorainfracloud.org/coprs/simc/stable/)
+repository, available for CentOS 7 and for the latest Fedora GNU/Linux
+distributions, while the third container makes use of only standard
+packages provided in the distribution. With minor adaptations the
+containers could be built on the base of Fedora 26-28 as well.
+
+The containers have been tested with
+[singularity](https://github.com/singularityware/singularity), version
+2.5.1 on a Fedora 24 system. This work is still experimental and has
+undergone limited testing. The following paragraphs explain how to
+build and use the containers.
+
+#### centos7-smnd-run.def ####
+
+For this container it is suggested to build a squashfs read-only image
+(singularity default as of version 2.5.1):
+
+```
+singularity build ./centos7-smnd centos7-smnd-run.def
+```
+
+to run a tool within the container, simply run the container file
+followed by the desired command and arguments, e.g. for
+vg6d_transform:
+
+```
+./centos7-smnd vg6d_transform --trans-type=zoom --sub-type=coord \
+  --ilon=5. --flon=16. --ilat=40. --flat=48. input.grib output.grib
+```
+
+#### centos7-smnd-devel.def ####
+
+For this container it is suggested to build a "sandbox" writable
+image:
+
+```
+singularity build --sandbox ./centos7-smnd centos7-smnd-run.def
+```
+
+for building software within the container, simply open a shell and
+work normally within the container:
+
+```
+singularity shell -w ./centos7-smnd
+Singularity: Invoking an interactive shell within container...
+
+Singularity centos7-smnd:~> gfortran -c myprogram.f90 -I/usr/lib64/gfortran/modules
+...
+
+```
+
+#### centos7-smnd-build.def ####
+
+Also for this container it is suggested to build a "sandbox" writable
+image:
+
+```
+singularity build --sandbox ./centos7-smnd centos7-smnd-build.def
+```
+
+for building all the smnd software within the container, open a shell,
+dounload the smnd package and build it inside the container:
+
+```
+singularity shell -w ./centos7-smnd
+Singularity: Invoking an interactive shell within container...
+
+Singularity centos7-smnd:~> git clone https://github.com/ARPA-SIMC/smnd.git
+Singularity centos7-smnd:~> cd smnd
+Singularity centos7-smnd:~> ./install_from_source.sh -d
+Singularity centos7-smnd:~> ./install_from_source.sh
+...
+
+```
 
 ## SMND and SMND ##
 

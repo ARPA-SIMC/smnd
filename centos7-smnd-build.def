@@ -1,0 +1,20 @@
+BootStrap: yum
+OSVersion: 7
+MirrorURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/os/$basearch/
+Include: yum
+
+# If you want the updates (available at the bootstrap date) to be installed
+# inside the container during the bootstrap instead of the General Availability
+# point release (7.x) then uncomment the following line
+#UpdateURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/updates/$basearch/
+
+%runscript
+    exec "$@"
+
+%post
+    yum install -q -y epel-release
+# build with smnd tools and libraries
+# install build tools
+    yum install -q -y gcc gcc-c++ gcc-gfortran wget make patch autoconf automake libtool gperf help2man file flex wget make patch autoconf automake libtool gperf help2man file flex git
+# install smnd packages build dependencies
+    yum install -q -y geos-devel glibc-devel hdf5-devel keyutils-libs-devel libcom_err-devel libcurl-devel libidn-devel libjpeg-turbo-devel libpng-devel libquadmath-devel libselinux-devel libssh2-devel libstdc++-devel libtool-ltdl-devel lzo-devel lua-devel netcdf-devel netcdf-cxx-devel nspr-devel nss-devel nss-softokn-freebl-devel nss-util-devel openldap-devel pcre-devel popt-devel shapelib-devel sqlite-devel  zlib-devel jasper-devel krb5-devel mariadb-devel openjpeg-devel openssl-devel postgresql-devel readline-devel xz-devel

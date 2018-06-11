@@ -1,0 +1,22 @@
+BootStrap: yum
+OSVersion: 7
+MirrorURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/os/$basearch/
+Include: yum
+
+# If you want the updates (available at the bootstrap date) to be installed
+# inside the container during the bootstrap instead of the General Availability
+# point release (7.x) then uncomment the following line
+#UpdateURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/updates/$basearch/
+
+%runscript
+    exec "$@"
+
+%post
+    yum install -q -y epel-release
+    yum install -q -y yum-plugin-copr
+    yum copr enable -q -y simc/stable epel-7
+# build with smnd libraries
+# install basic build tools
+    yum install -q -y gcc gcc-c++ gcc-gfortran make
+# install smnd devel packages from simc repository
+    yum install -q -y wreport-devel dballe-devel arkimet-devel libsim-devel
