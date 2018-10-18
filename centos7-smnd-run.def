@@ -13,7 +13,7 @@ Include: yum
 
 %post
     yum install -q -y epel-release
-    yum install -q -y yum-plugin-copr
+    yum install -q -y yum-plugin-ovl yum-plugin-copr
     yum copr enable -q -y simc/stable epel-7
 # install smnd packages from simc repository
     yum install -q -y wreport bufr2netcdf dballe arkimet libsim

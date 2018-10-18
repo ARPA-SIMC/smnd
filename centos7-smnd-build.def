@@ -13,6 +13,7 @@ Include: yum
 
 %post
     yum install -q -y epel-release
+    yum install -q -y yum-plugin-ovl
 # build with smnd tools and libraries
 # install build tools
     yum install -q -y gcc gcc-c++ gcc-gfortran wget make patch autoconf automake libtool gperf help2man file flex wget make patch autoconf automake libtool gperf help2man file flex git
