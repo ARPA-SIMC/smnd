@@ -48,9 +48,29 @@ do_grib_api() {
     fi
 }
 
+do_eccodes() {
+    dir=-2.9.1-Source
+    url="https://confluence.ecmwf.int/download/attachments/45757960/eccodes-2.9.2-Source.tar.gz?api=v2"
+
+    if [ "$1" = "-d" ]; then
+	download_and_setup $url
+    elif [ "$1" = "-b" ]; then
+	cd $dir
+# --with-ifs-samples=$PREFIX/$dir
+	./configure --disable-static --with-png-support --datadir=$PREFIX/share --prefix=$PREFIX
+	make
+	make install
+	cd ..
+    elif [ "$1" = "-c" ]; then
+	[ -n "$dir" ] && rm -rf $dir
+    elif [ "$1" = "-l" ]; then
+	clean_source $url
+    fi
+}
+
 do_wreport() {
-    dir=wreport-3.12-1
-    url=https://github.com/ARPA-SIMC/wreport/archive/v3.12-1.tar.gz
+    dir=wreport-3.19-1
+    url=https://github.com/ARPA-SIMC/wreport/archive/v3.19-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -71,8 +91,8 @@ do_wreport() {
 }
 
 do_bufr2netcdf() {
-    dir=bufr2netcdf-1.4-1
-    url=https://github.com/ARPA-SIMC/bufr2netcdf/archive/v1.4-1.tar.gz
+    dir=bufr2netcdf-1.5-1
+    url=https://github.com/ARPA-SIMC/bufr2netcdf/archive/v1.5-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -93,8 +113,8 @@ do_bufr2netcdf() {
 }
 
 do_dballe() {
-    dir=dballe-7.27-1
-    url=https://github.com/ARPA-SIMC/dballe/archive/v7.27-1.tar.gz
+    dir=dballe-8.0-2
+    url=https://github.com/ARPA-SIMC/dballe/archive/v8.0-2.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -116,8 +136,8 @@ do_dballe() {
 }
 
 do_arkimet() {
-    dir=arkimet-1.6-3
-    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.6-3.tar.gz
+    dir=arkimet-1.14-1
+    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.14-1.tar.gz
 #    dir=arkimet-master
 #    url=https://github.com/ARPA-SIMC/arkimet/archive/master.tar.gz
 
@@ -125,8 +145,8 @@ do_arkimet() {
 	download_and_setup $url
 	cd $dir
 	# patch for old linux versions
-	sed -e '19i#undef F_OFD_SETLKW\n#undef F_OFD_SETLK' -i arki/dataset/local.cc
-	sed -e '14i#undef F_OFD_SETLKW\n#undef F_OFD_SETLK' -i arki/utils/sys.cc
+#	sed -e '19i#undef F_OFD_SETLKW\n#undef F_OFD_SETLK' -i arki/dataset/local.cc
+#	sed -e '14i#undef F_OFD_SETLKW\n#undef F_OFD_SETLK' -i arki/utils/sys.cc
 	autoreconf -if
 	cd ..
     elif [ "$1" = "-b" ]; then
@@ -163,8 +183,8 @@ do_fortrangis() {
 }
 
 do_libsim() {
-    dir=libsim-6.2.7-1
-    url=https://github.com/ARPA-SIMC/libsim/archive/v6.2.7-1.tar.gz
+    dir=libsim-6.3.1-1
+    url=https://github.com/ARPA-SIMC/libsim/archive/v6.3.1-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -173,7 +193,7 @@ do_libsim() {
 	cd ..
     elif [ "$1" = "-b" ]; then
 	cd $dir
-	./configure --disable-static --enable-f2003-features --enable-f2003-extended-features --disable-log4c --disable-oraclesim --enable-alchimia --disable-ngmath --disable-ncarg --disable-netcdf --disable-doxydoc --prefix=$PREFIX
+	./configure --disable-static --enable-f2003-features --enable-f2003-extended-features --disable-log4c --enable-alchimia --disable-ngmath --disable-ncarg --disable-netcdf --disable-doxydoc --prefix=$PREFIX
 	make
 	make install
 	cd ..
