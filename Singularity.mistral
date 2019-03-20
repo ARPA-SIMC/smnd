@@ -11,6 +11,10 @@ UpdateURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/updates/$ba
 %runscript
     exec "$@"
 
+%environment
+    PATH=/usr/bin:/usr/sbin
+    export PATH
+    
 %post
     yum install -q -y epel-release
     yum install -q -y yum-plugin-copr
