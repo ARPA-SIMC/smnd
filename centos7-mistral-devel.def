@@ -13,7 +13,13 @@ UpdateURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/updates/$ba
 
 %post
     yum install -q -y epel-release
-    yum install -q -y yum-plugin-ovl yum-plugin-copr
+    yum install -q -y yum-plugin-copr
     yum copr enable -q -y simc/stable epel-7
 # install smnd packages from simc repository
     yum install -q -y wreport bufr2netcdf dballe arkimet libsim
+    yum install -q -y ecflow ecflow-ui ecflow-server ecflow-python Metview Magics python3-Magics eccodes eccodes-doc eccodes-simc libemos
+# temporary for metview, improve spec
+#    yum install -q -y vi hostname xorg-x11-utils xterm xkeyboard-config
+# install a minimum of devel resources and libraries
+    yum install -q -y gcc gcc-gfortran gcc-c++ gdb gcc-gdb-plugin
+    yum install -q -y libwreport-devel libdballe-devel libdballef-devel libsim-devel eccodes-devel
