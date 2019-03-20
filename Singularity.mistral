@@ -19,4 +19,4 @@ UpdateURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/updates/$ba
     yum install -q -y wreport bufr2netcdf dballe arkimet libsim
     yum install -q -y ecflow ecflow-ui ecflow-server ecflow-python Metview Magics python3-Magics eccodes eccodes-doc eccodes-simc libemos
 # temporary for metview, improve spec
-#    yum install -q -y vi hostname xorg-x11-utils xterm xkeyboard-config
+    yum install -q -y vi hostname xorg-x11-utils xterm xkeyboard-config
