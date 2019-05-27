@@ -49,18 +49,28 @@ do_grib_api() {
 }
 
 do_eccodes() {
-    dir=-2.9.1-Source
-    url="https://confluence.ecmwf.int/download/attachments/45757960/eccodes-2.9.2-Source.tar.gz?api=v2"
+    dir=eccodes-2.9.2-Source
+    url="https://confluence.ecmwf.int/download/attachments/45757960/eccodes-2.9.2-Source.tar.gz"
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
     elif [ "$1" = "-b" ]; then
 	cd $dir
-# --with-ifs-samples=$PREFIX/$dir
-	./configure --disable-static --with-png-support --datadir=$PREFIX/share --prefix=$PREFIX
+	# --with-ifs-samples=$PREFIX/$dir
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=$PREFIX \
+	      -DBUILD_SHARED_LIBS=ON \
+              -DCMAKE_INSTALL_MESSAGE=NEVER \
+              -DENABLE_ECCODES_OMP_THREADS=OFF \
+              -DENABLE_EXTRA_TESTS=ON \
+              -DENABLE_PNG=ON \
+              -DCMAKE_SKIP_RPATH=TRUE \
+              -DENABLE_PYTHON=OFF \
+	      ..
 	make
 	make install
-	cd ..
+	cd ../..
     elif [ "$1" = "-c" ]; then
 	[ -n "$dir" ] && rm -rf $dir
     elif [ "$1" = "-l" ]; then
@@ -69,8 +79,8 @@ do_eccodes() {
 }
 
 do_wreport() {
-    dir=wreport-3.19-1
-    url=https://github.com/ARPA-SIMC/wreport/archive/v3.19-1.tar.gz
+    dir=wreport-3.20-1
+    url=https://github.com/ARPA-SIMC/wreport/archive/v3.20-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -113,8 +123,8 @@ do_bufr2netcdf() {
 }
 
 do_dballe() {
-    dir=dballe-8.0-2
-    url=https://github.com/ARPA-SIMC/dballe/archive/v8.0-2.tar.gz
+    dir=dballe-8.0-3
+    url=https://github.com/ARPA-SIMC/dballe/archive/v8.0-3.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -136,8 +146,8 @@ do_dballe() {
 }
 
 do_arkimet() {
-    dir=arkimet-1.14-1
-    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.14-1.tar.gz
+    dir=arkimet-1.16-1
+    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.16-1.tar.gz
 #    dir=arkimet-master
 #    url=https://github.com/ARPA-SIMC/arkimet/archive/master.tar.gz
 
@@ -205,29 +215,28 @@ do_libsim() {
 }
 
 do_ma_utils() {
-    dir=ma_utils-0.13
-    url=ma_utils-0.13.tar.gz
+    dir=ma_utils-0.14-2
+    url=https://github.com/ARPA-SIMC/ma_utils/archive/v0.14-2.tar.gz
 
     if [ "$1" = "-d" ]; then
-	if [ -f "$url" ]; then
-	    download_and_setup $url
-	fi
+	download_and_setup $url
+	cd $dir
+	autoreconf -if
+	cd ..
     elif [ "$1" = "-b" ]; then
-	if [ -f "$url" ]; then
-	    cd $dir
-	    ./configure --enable-smnd-build --prefix=$PREFIX
-	    make
-	    make install
-# link in bin/ executables in libexec/ for simplifying universal installation
-	    for path in $PREFIX/libexec/ma_utils/*; do
-		if [ -f "$path" ]; then
-		    file=${path##*/}
-		    rm -f $PREFIX/bin/$file
-		    ln -s ../libexec/ma_utils/$file $PREFIX/bin
-		fi
-	    done
-	    cd ..
-	fi
+	cd $dir
+	./configure --enable-smnd-build --prefix=$PREFIX
+	make
+	make install
+	# link in bin/ executables in libexec/ for simplifying universal installation
+	for path in $PREFIX/libexec/ma_utils/*; do
+	    if [ -f "$path" ]; then
+		file=${path##*/}
+		rm -f $PREFIX/bin/$file
+		ln -s ../libexec/ma_utils/$file $PREFIX/bin
+	    fi
+	done
+	cd ..
     elif [ "$1" = "-c" ]; then
 	[ -n "$dir" ] && rm -rf $dir
     elif [ "$1" = "-l" ]; then

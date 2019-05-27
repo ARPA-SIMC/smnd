@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION=2.4
+VERSION=2.5
 PACKAGE=smnd
 EXTRA_LIBRARIES1="libnss_files libnss_dns libnss_myhostname libcap libdw libattr libelf liblzma libbz2"
 EXTRA_LIBRARIES2="libsoftokn3 libfreeblpriv3 libnsssysinit"
@@ -13,7 +13,7 @@ LIBDIR=/usr/lib64
 : ${PREFIX:=$SCRATCH/$PACKAGE-$VERSION}
 
 # list of action functions
-ACTIONLIST="do_grib_api do_wreport do_bufr2netcdf do_dballe do_arkimet do_fortrangis do_libsim do_ma_utils"
+ACTIONLIST="do_eccodes do_wreport do_bufr2netcdf do_dballe do_arkimet do_fortrangis do_libsim do_ma_utils"
 # source package specific action functions
 . ./action.sh
 
