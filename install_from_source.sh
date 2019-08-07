@@ -82,7 +82,7 @@ LD=${LD##*/}
 
 cat > $PREFIX/unibin/smnd_exec.sh <<EOF
 #!/bin/sh
-: \${GRIB_DEFINITION_PATH:=\$SMND_PREFIX/share/grib_api/definitions}
+: \${GRIB_DEFINITION_PATH:=\$SMND_PREFIX/share/eccodes/definitions}
 export GRIB_DEFINITION_PATH
 export LOG4C_PRIORITY=600
 export WREPORT_TABLES=\$SMND_PREFIX/share/wreport
