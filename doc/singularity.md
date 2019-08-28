@@ -13,7 +13,7 @@ singularity software is installed, such as an HPC cluster.
 
 For building a container, download the
 [centos7-smnd-run.def](https://github.com/ARPA-SIMC/smnd/blob/master/centos7-smnd-run.def)
-file from the SMND repository and run:
+recipe file from the SMND repository and run:
 
 ```
 singularity build ./centos7-smnd.sif centos7-smnd-run.def
