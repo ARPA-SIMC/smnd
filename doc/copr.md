@@ -8,8 +8,9 @@ the [Copr](https://copr.fedorainfracloud.org) platform, which is a
 free service provided by the Fedora project.
 
 The steps for enabling the repository and installing the packages
-(exactly as in the [container](singularity.md) approach), on a CentOS
-7 distribution are the following:
+(exactly as in the
+[container](https://github.com/ARPA-SIMC/smnd/blob/master/centos7-smnd-run.def)
+approach), on a CentOS 7 distribution are the following:
 
 ```
 # install copr plugin and enable simc repository

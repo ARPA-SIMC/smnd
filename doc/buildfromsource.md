@@ -11,7 +11,7 @@ download a copy of the SMND source package (which does not include the
 real software sources, just the build system) in the [releases
 section](https://github.com/dcesari/smnd/releases) of the project or
 by cloning the github master branch, install the required [list of
-dependencies](ListOfDependencies), including the gcc compiler
+dependencies](listofdependencies), including the gcc compiler
 collection version >= 4.8 and the `wget` command, and run the
 following list of commands:
 

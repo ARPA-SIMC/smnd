@@ -11,15 +11,16 @@ any system, such as a personal laptop or a virtual machine; after
 build it can be used, without being root, on any system where the
 singularity software is installed, such as an HPC cluster.
 
-For building a container, download the `centos7-smnd-run.def` from the
-SMND repository and run:
+For building a container, download the
+[centos7-smnd-run.def](https://github.com/ARPA-SIMC/smnd/blob/master/centos7-smnd-run.def)
+file from the SMND repository and run:
 
 ```
 singularity build ./centos7-smnd.sif centos7-smnd-run.def
 ```
 
-This will take some time and require a good internet connection to
-download and install the software packages and libraries in the
+This will take some time and require a good internet connection for
+downloading and installing the software packages and libraries in the
 container. At the end of the process you will obtain a single big
 executable file `centos7-smnd.sif` (also called "image") containing
 all the tools and libraries. It can be ported on any system where
@@ -35,5 +36,5 @@ vg6d_transform:
 ```
 
 For more information, see the [singularity
-documentation(]https://sylabs.io/guides/3.3/user-guide/quick_start.html#interact-with-images).
+documentation](https://sylabs.io/guides/3.3/user-guide/quick_start.html#interact-with-images).
 
