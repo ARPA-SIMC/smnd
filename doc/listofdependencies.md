@@ -31,7 +31,7 @@ package list:
 
 ```
 gcc gcc-gfortran gcc-c++ wget cmake make patch autoconf automake libtool \
-gperf help2man file flex geos-devel glibc-devel hdf5-devel \
+gperf help2man file flex bison geos-devel glibc-devel hdf5-devel \
 keyutils-libs-devel libcom_err-devel libcurl-devel libidn-devel \
 libjpeg-turbo-devel libpng-devel libquadmath-devel libselinux-devel \
 libssh2-devel libstdc++-devel libtool-ltdl-devel lzo-devel lua-devel \
