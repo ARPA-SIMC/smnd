@@ -148,8 +148,8 @@ do_dballe() {
 }
 
 do_arkimet() {
-    dir=arkimet-1.16-1
-    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.16-1.tar.gz
+    dir=arkimet-1.21-1
+    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.21-1.tar.gz
 #    dir=arkimet-master
 #    url=https://github.com/ARPA-SIMC/arkimet/archive/master.tar.gz
 

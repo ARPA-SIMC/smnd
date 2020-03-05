@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION=2.8
+VERSION=2.9
 PACKAGE=smnd
 EXTRA_LIBRARIES1="libnss_files libnss_dns libnss_myhostname libcap libdw libattr libelf liblzma libbz2"
 EXTRA_LIBRARIES2="libsoftokn3 libfreeblpriv3 libnsssysinit"
