@@ -13,7 +13,8 @@ LIBDIR=/usr/lib64
 : ${PREFIX:=$SCRATCH/$PACKAGE-$VERSION}
 
 # list of action functions
-ACTIONLIST="do_eccodes do_wreport do_bufr2netcdf do_dballe do_arkimet do_fortrangis do_libsim do_ma_utils"
+#ACTIONLIST="do_eccodes do_wreport do_bufr2netcdf do_dballe do_arkimet do_fortrangis do_libsim do_ma_utils"
+ACTIONLIST="do_eccodes do_wreport do_bufr2netcdf do_dballe do_fortrangis do_libsim do_ma_utils"
 # source package specific action functions
 . ./action.sh
 

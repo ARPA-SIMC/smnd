@@ -163,8 +163,7 @@ do_arkimet() {
 	cd ..
     elif [ "$1" = "-b" ]; then
 	cd $dir
-#	./configure --disable-static --enable-bufr --disable-vm2 --disable-geos --disable-python --prefix=$PREFIX
-	./configure --disable-static --enable-bufr --disable-vm2 --disable-python --prefix=$PREFIX
+	./configure --disable-static --enable-bufr --disable-vm2 --disable-geos --disable-python --prefix=$PREFIX
 	make
 	make install
 	cd ..
