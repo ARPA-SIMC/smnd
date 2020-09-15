@@ -79,10 +79,10 @@ do_eccodes() {
 }
 
 do_wreport() {
-    dir=wreport-3.20-1
-    url=https://github.com/ARPA-SIMC/wreport/archive/v3.20-1.tar.gz
-    dir=wreport-master
-    url=https://github.com/ARPA-SIMC/wreport/archive/master.tar.gz
+    dir=wreport-3.26-1
+    url=https://github.com/ARPA-SIMC/wreport/archive/v3.26-1.tar.gz
+#    dir=wreport-master
+#    url=https://github.com/ARPA-SIMC/wreport/archive/master.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -103,8 +103,8 @@ do_wreport() {
 }
 
 do_bufr2netcdf() {
-    dir=bufr2netcdf-1.5-1
-    url=https://github.com/ARPA-SIMC/bufr2netcdf/archive/v1.5-1.tar.gz
+    dir=bufr2netcdf-1.6-1
+    url=https://github.com/ARPA-SIMC/bufr2netcdf/archive/v1.6-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -125,8 +125,8 @@ do_bufr2netcdf() {
 }
 
 do_dballe() {
-    dir=dballe-8.0-3
-    url=https://github.com/ARPA-SIMC/dballe/archive/v8.0-3.tar.gz
+    dir=dballe-8.12-1
+    url=https://github.com/ARPA-SIMC/dballe/archive/v8.12-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -148,8 +148,8 @@ do_dballe() {
 }
 
 do_arkimet() {
-    dir=arkimet-1.21-1
-    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.21-1.tar.gz
+    dir=arkimet-1.29-1
+    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.29-1.tar.gz
 #    dir=arkimet-master
 #    url=https://github.com/ARPA-SIMC/arkimet/archive/master.tar.gz
 
@@ -194,8 +194,8 @@ do_fortrangis() {
 }
 
 do_libsim() {
-    dir=libsim-6.3.1-1
-    url=https://github.com/ARPA-SIMC/libsim/archive/v6.3.1-1.tar.gz
+    dir=libsim-6.4.5-1
+    url=https://github.com/ARPA-SIMC/libsim/archive/v6.4.5-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
