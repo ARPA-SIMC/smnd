@@ -79,8 +79,8 @@ do_eccodes() {
 }
 
 do_wreport() {
-    dir=wreport-3.26-1
-    url=https://github.com/ARPA-SIMC/wreport/archive/v3.26-1.tar.gz
+    dir=wreport-3.30-1
+    url=https://github.com/ARPA-SIMC/wreport/archive/v3.30-1.tar.gz
 #    dir=wreport-master
 #    url=https://github.com/ARPA-SIMC/wreport/archive/master.tar.gz
 
@@ -204,7 +204,7 @@ do_libsim() {
 	cd ..
     elif [ "$1" = "-b" ]; then
 	cd $dir
-	./configure --disable-static --enable-f2003-features --enable-f2003-extended-features --disable-log4c --enable-alchimia --disable-ngmath --disable-ncarg --disable-netcdf --disable-doxydoc --prefix=$PREFIX
+	./configure --disable-static --enable-f2003-features --enable-f2003-extended-features --disable-log4c --enable-alchimia --disable-ngmath --disable-ncarg --disable-netcdf --disable-doxydoc --prefix=$PREFIX FCFLAGS='-I/usr/lib64/gfortran/modules -I/usr/include'
 	make
 	make install
 	cd ..
