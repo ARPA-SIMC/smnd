@@ -31,19 +31,20 @@ singularity software is installed.
 
 ### Downloading a pre-built container ###
 
-A pre-built container for smnd is available on the [Singularity hub
-public service](https://singularity-hub.org/collections/2576), as an
+A pre-built container for smnd is available on the [SylabsCloud
+library public
+service](https://cloud.sylabs.io/library/dcesari/default/smnd), as an
 alternative to building it on one's own.
 
 In order to download it you need to install the singularity package
 version 3.0 or later and pull the container with the command:
 
 ```
-singularity pull shub://ARPA-SIMC/smnd:smnd-run
+singularity pull library://dcesari/default/smnd:latest
 ```
 
-obtaining the file `smnd_smnd-run.sif`. The container on Singularity
-hub is built manually from time to time, to it may not contain the
+obtaining the file `smnd_latest.sif`. The container on SylabsCloud
+library is built manually from time to time, so it may not contain the
 latest versions of the software as it is the case with a self-built
 container.
 
