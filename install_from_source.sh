@@ -2,7 +2,7 @@
 
 set -e
 
-VERSION=2.11
+VERSION=2.12
 PACKAGE=smnd
 EXTRA_LIBRARIES1="libnss_files libnss_dns libnss_myhostname libcap libdw libattr libelf liblzma libbz2"
 EXTRA_LIBRARIES2="libsoftokn3 libfreeblpriv3 libnsssysinit"
@@ -83,8 +83,9 @@ LD=${LD##*/}
 
 cat > $PREFIX/unibin/smnd_exec.sh <<EOF
 #!/bin/sh
-: \${GRIB_DEFINITION_PATH:=\$SMND_PREFIX/share/eccodes/definitions}
-export GRIB_DEFINITION_PATH
+: \${ECCODES_DEFINITION_PATH:=\$SMND_PREFIX/share/eccodes/definitions}
+: \${ECCODES_SAMPLES_PATH:=\$SMND_PREFIX/share/eccodes/samples}
+export ECCODES_DEFINITION_PATH ECCODES_SAMPLES_PATH
 export LOG4C_PRIORITY=600
 export WREPORT_TABLES=\$SMND_PREFIX/share/wreport
 export B2NC_TABLES=\$SMND_PREFIX/share/bufr2netcdf

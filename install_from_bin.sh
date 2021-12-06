@@ -38,7 +38,8 @@ else
 if [ -z "\$SMND_PROFILE" ]; then
 export LD_LIBRARY_PATH=\${LD_LIBRARY_PATH:+\$LD_LIBRARY_PATH:}$PREFIX/lib
 export PATH=$PREFIX/bin:\$PATH
-export GRIB_DEFINITION_PATH=$PREFIX/share/eccodes/definitions
+export ECCODES_DEFINITION_PATH=$PREFIX/share/eccodes/definitions
+export ECCODES_SAMPLES_PATH=$PREFIX/share/eccodes/samples
 export LOG4C_PRIORITY=600
 export WREPORT_TABLES=$PREFIX/share/wreport
 export B2NC_TABLES=$PREFIX/share/bufr2netcdf
