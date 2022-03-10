@@ -81,8 +81,8 @@ do_eccodes() {
 do_wreport() {
     dir=wreport-3.31-1
     url=https://github.com/ARPA-SIMC/wreport/archive/v3.31-1.tar.gz
-#    dir=wreport-master
-#    url=https://github.com/ARPA-SIMC/wreport/archive/master.tar.gz
+    dir=wreport-master
+    url=https://github.com/ARPA-SIMC/wreport/archive/master.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
