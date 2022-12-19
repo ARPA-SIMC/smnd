@@ -49,8 +49,8 @@ do_grib_api() {
 }
 
 do_eccodes() {
-    dir=eccodes-2.9.2-Source
-    url="https://confluence.ecmwf.int/download/attachments/45757960/eccodes-2.9.2-Source.tar.gz"
+    dir=eccodes-2.25.0-Source
+    url="https://confluence.ecmwf.int/download/attachments/45757960/eccodes-2.25.0-Source.tar.gz"
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -79,10 +79,8 @@ do_eccodes() {
 }
 
 do_wreport() {
-    dir=wreport-3.31-1
-    url=https://github.com/ARPA-SIMC/wreport/archive/v3.31-1.tar.gz
-    dir=wreport-master
-    url=https://github.com/ARPA-SIMC/wreport/archive/master.tar.gz
+    dir=wreport-3.35-1
+    url=https://github.com/ARPA-SIMC/wreport/archive/v3.35-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -148,8 +146,8 @@ do_dballe() {
 }
 
 do_arkimet() {
-    dir=arkimet-1.39-1
-    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.39-1.tar.gz
+    dir=arkimet-1.45-1
+    url=https://github.com/ARPA-SIMC/arkimet/archive/v1.45-1.tar.gz
 #    dir=arkimet-master
 #    url=https://github.com/ARPA-SIMC/arkimet/archive/master.tar.gz
 
@@ -175,8 +173,8 @@ do_arkimet() {
 }
 
 do_fortrangis() {
-    dir=fortrangis-2.6
-    url=https://github.com/dcesari/fortrangis/archive/v2.6.tar.gz
+    dir=fortrangis-3.0-1
+    url=https://github.com/ARPA-SIMC/fortrangis/archive/refs/tags/v3.0-1.tar.gz
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
     elif [ "$1" = "-b" ]; then
@@ -194,8 +192,8 @@ do_fortrangis() {
 }
 
 do_libsim() {
-    dir=libsim-6.5.3-1
-    url=https://github.com/ARPA-SIMC/libsim/archive/v6.5.3-1.tar.gz
+    dir=libsim-7.1.2-1
+    url=https://github.com/ARPA-SIMC/libsim/archive/v7.1.2-1.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
@@ -216,8 +214,8 @@ do_libsim() {
 }
 
 do_ma_utils() {
-    dir=ma_utils-0.14-2
-    url=https://github.com/ARPA-SIMC/ma_utils/archive/v0.14-2.tar.gz
+    dir=ma_utils-0.15-3
+    url=https://github.com/ARPA-SIMC/ma_utils/archive/v0.15-3.tar.gz
 
     if [ "$1" = "-d" ]; then
 	download_and_setup $url
