@@ -40,7 +40,7 @@ In order to download it you need to install the singularity package
 version 3.0 or later and pull the container with the command:
 
 ```
-singularity pull library://dcesari/default/smnd:latest
+singularity pull library://dcesari/default/smnd:nwprun_r8
 ```
 
 obtaining the file `smnd_latest.sif`. The container on SylabsCloud
