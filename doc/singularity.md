@@ -3,7 +3,7 @@
 The SMND project provides a container definition file suitable for
 creating a [singularity](https://sylabs.io/singularity/) container
 including all the software collection. The container is based on the
-CentOS 7 packages, but it can be built and run on any Linux x86_64
+CentOS 8 packages, but it can be built and run on any Linux x86_64
 distribution where the singularity package (version 2.5 or later) is
 installed.
 
@@ -15,17 +15,17 @@ build it can be used, without being root, on any system where the
 singularity software is installed, such as an HPC cluster.
 
 For building a container, download the
-[Singularity.smnd-run](https://github.com/ARPA-SIMC/smnd/blob/master/Singularity.smnd-run)
+[Singularity.smnd-run](https://github.com/ARPA-SIMC/smnd/blob/master/Singularity.simc_tools_r8)
 recipe file from the SMND repository and run:
 
 ```
-singularity build ./smnd-run.sif Singularity.smnd-run
+singularity build ./simc_tools.sif Singularity.simc_tools_r8
 ```
 
 This will take some time and require a good internet connection for
 downloading and installing the software packages and libraries in the
 container. At the end of the process you will obtain a single big
-executable file `smnd-run.sif` (also called "image") containing all
+executable file `simc_tools.sif` (also called "image") containing all
 the tools and libraries. It can be ported on any system where
 singularity software is installed.
 
@@ -33,31 +33,49 @@ singularity software is installed.
 
 A pre-built container for smnd is available on the [SylabsCloud
 library public
-service](https://cloud.sylabs.io/library/dcesari/default/smnd), as an
+service](https://cloud.sylabs.io/library/dcesari/default/simctools), as an
 alternative to building it on one's own.
 
 In order to download it you need to install the singularity package
 version 3.0 or later and pull the container with the command:
 
 ```
-singularity pull library://dcesari/default/smnd:nwprun_r8
+singularity pull library://dcesari/default/simctools:simc_tools_r8
 ```
 
-obtaining the file `smnd_latest.sif`. The container on SylabsCloud
+obtaining the file `simctools_simc_tools_r8.sif` (or possibly a file
+with a different name).  It is also possible to download the container
+interactively through the web interface.
+
+The container on SylabsCloud
 library is built manually from time to time, so it may not contain the
-latest versions of the software as it is the case with a self-built
-container.
+latest versions of the software packages available in the repository
+as it is the case with a self-built container.
 
 ### Running executables within the container ###
 
-To run a tool within the container, simply launch the container image
-executable followed by the desired command and arguments, e.g. for
-vg6d_transform:
+To run a tool within the container, you can make the container
+executable with the `chmod +x` command and simply launch the container
+image executable followed by the desired command and arguments,
+e.g. for vg6d_transform:
 
 ```
-./smnd-run.sif vg6d_transform --trans-type=zoom --sub-type=coord \
+./simc_tools.sif vg6d_transform --trans-type=zoom --sub-type=coord \
   --ilon=5. --flon=16. --ilat=40. --flat=48. input.grib output.grib
 ```
+
+You can also explicitely run through the singularity command (e.g. in
+case you need to add command-line arguments to singularity):
+
+```
+singularity exec ./simc_tools.sif vg6d_transform --trans-type=zoom --sub-type=coord \
+  --ilon=5. --flon=16. --ilat=40. --flat=48. input.grib output.grib
+```
+
+A frequently needed singularity argument is the `-B <directory>`
+(possibly repeated multiple times) which allows to "see" in the
+container a mount point other than the one containing the user's home
+directory.
 
 For more information, see the [singularity
 documentation](https://sylabs.io/guides/3.3/user-guide/quick_start.html#interact-with-images).

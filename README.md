@@ -36,4 +36,16 @@ approaches are possible for quickly deploying precompiled binaries:
  * Installing in a supported distribution (CentOS/Fedora) from [copr
    repository](doc/copr.md) (requires to BE the system administrator).
 
-### Notes for COSMO model users
+### Deprecation note
+
+This build tool and the universal binary package are at the moment (2023-09)
+deprecated in favor of the [singularity container](doc/singularity.md)
+approach. See also the [nwprun package](https://github.com/ARPA-SIMC/nwprun)
+for other related containers.
+
+Please notice also that
+the universal binary packages successive to smnd version 2.7
+do not contain the arkimet
+package due to the dependency on python which would be uncomfortable to be
+included in the universal package. The universal package v2.7 though is still
+available for download in the releases section of github.
