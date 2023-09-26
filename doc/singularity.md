@@ -15,7 +15,7 @@ build it can be used, without being root, on any system where the
 singularity software is installed, such as an HPC cluster.
 
 For building a container, download the
-[Singularity.smnd-run](https://github.com/ARPA-SIMC/smnd/blob/master/Singularity.simc_tools_r8)
+[Singularity.simc_tools_r8](https://github.com/ARPA-SIMC/smnd/blob/master/Singularity.simc_tools_r8)
 recipe file from the SMND repository and run:
 
 ```
@@ -64,7 +64,7 @@ e.g. for vg6d_transform:
   --ilon=5. --flon=16. --ilat=40. --flat=48. input.grib output.grib
 ```
 
-You can also explicitely run through the singularity command (e.g. in
+You can also explicitly run through the singularity command (e.g. in
 case you need to add command-line arguments to singularity):
 
 ```
